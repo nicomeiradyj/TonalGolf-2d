@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TonalGolf 2d"
-run/main_scene="uid://dy7on1h07p4jj"
+run/main_scene="uid://g2wjjju7cwm6"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

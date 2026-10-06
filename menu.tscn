@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cbwe46rbretlc"]
 
-[ext_resource type="FontFile" path="res://assets/w3-ip.ttf" id="1_lti8b"]
-[ext_resource type="Script" path="res://scripts/menu_boton_nivel.gd" id="2_mae5d"]
-[ext_resource type="AudioStream" path="res://assets/menu_click.mp3" id="3_4hy44"]
+[ext_resource type="FontFile" uid="uid://b6kdap2sdhueq" path="res://assets/w3-ip.ttf" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://bxy4nxwgcyjew" path="res://scripts/menu_principal.tscn.gd" id="2_mae5d"]
+[ext_resource type="AudioStream" uid="uid://bnpquolboiwul" path="res://assets/menu_click.mp3" id="3_4hy44"]
 
 [node name="MenuPrincipal" type="Control" unique_id=1356918629]
 layout_mode = 3

@@ -16,8 +16,10 @@ radius = 63.0
 [node name="Pelota" type="RigidBody2D" unique_id=351689159]
 physics_material_override = SubResource("PhysicsMaterial_2lask")
 gravity_scale = 0.0
-linear_damp = 2.0
+linear_damp = 1.5
 script = ExtResource("1_0okw3")
+power_multiplier = 8.0
+max_aim_length = 250.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=564782816]
 scale = Vector2(0.35, 0.35)

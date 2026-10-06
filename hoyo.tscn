@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://deidyefrvlptn"]
+
+[ext_resource type="Script" uid="uid://cyfvbhw48xunc" path="res://hoyo.gd" id="1_xmh7r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8w0r3"]
+radius = 80.0
+
+[node name="Hoyo" type="Area2D" unique_id=597095437]
+script = ExtResource("1_xmh7r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=447705476]
+shape = SubResource("CircleShape2D_8w0r3")
+
+[node name="Flag" type="Node2D" parent="." unique_id=1306244939]
+z_index = 1
+scale = Vector2(2, 2)
+
+[node name="Palo" type="Line2D" parent="Flag" unique_id=142891569]
+scale = Vector2(1e-05, 1e-05)
+points = PackedVector2Array(0, 0, 0, -120)
+width = 4.0
+
+[node name="Tela" type="Polygon2D" parent="Flag" unique_id=465063853]
+color = Color(0.8495599, 3.2969565e-06, 1.540184e-06, 1)
+polygon = PackedVector2Array(0, -120, 60, -100, 0, -80)

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dy7on1h07p4jj"]
 
+[ext_resource type="Script" uid="uid://dmkkgknnt4pfu" path="res://nivel_1.gd" id="1_2lask"]
 [ext_resource type="PackedScene" uid="uid://5lhwwyyqub60" path="res://pelota.tscn" id="1_xi31o"]
+[ext_resource type="PackedScene" uid="uid://deidyefrvlptn" path="res://hoyo.tscn" id="3_m2gv8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
 size = Vector2(1442, 5)
@@ -15,6 +17,7 @@ size = Vector2(2, 2557)
 size = Vector2(1, 2566)
 
 [node name="Nivel1" type="Node2D" unique_id=1215263058]
+script = ExtResource("1_2lask")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
 zoom = Vector2(0.5, 0.5)
@@ -38,3 +41,6 @@ shape = SubResource("RectangleShape2D_w7mgy")
 [node name="ParedDerecha" type="CollisionShape2D" parent="Bordes" unique_id=967012800]
 position = Vector2(722, -2)
 shape = SubResource("RectangleShape2D_4e15o")
+
+[node name="Hoyo" parent="." unique_id=597095437 instance=ExtResource("3_m2gv8")]
+position = Vector2(0, -900)

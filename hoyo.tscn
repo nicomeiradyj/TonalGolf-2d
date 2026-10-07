@@ -16,7 +16,6 @@ z_index = 1
 scale = Vector2(2, 2)
 
 [node name="Palo" type="Line2D" parent="Flag" unique_id=142891569]
-scale = Vector2(1e-05, 1e-05)
 points = PackedVector2Array(0, 0, 0, -120)
 width = 4.0
 

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://5lhwwyyqub60"]
+
+[ext_resource type="Script" uid="uid://8d5fiul6oy4p" path="res://pelota.gd" id="1_0okw3"]
+[ext_resource type="Texture2D" uid="uid://bes7b2w33ypsq" path="res://punta_flecha.png" id="2_0okw3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2lask"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sha3n"]
+load_path = "res://.godot/imported/spritePelota.png-28305b55444b609ffa4bfe799bca0e6a.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8w0r3"]
+radius = 63.0
+
+[node name="Pelota" type="RigidBody2D" unique_id=351689159]
+physics_material_override = SubResource("PhysicsMaterial_2lask")
+gravity_scale = 0.0
+linear_damp = 1.5
+script = ExtResource("1_0okw3")
+power_multiplier = 8.0
+max_aim_length = 250.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=564782816]
+scale = Vector2(0.35, 0.35)
+texture = SubResource("CompressedTexture2D_sha3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1237414853]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_8w0r3")
+
+[node name="LineaApuntado" type="Line2D" parent="." unique_id=1128593975]
+width = 7.0
+default_color = Color(1, 0, 0, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="PuntaFlecha" type="Sprite2D" parent="LineaApuntado" unique_id=148068975]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_0okw3")

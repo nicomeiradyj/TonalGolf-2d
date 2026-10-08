@@ -1,12 +1,7 @@
 extends Node2D
-## Script compartido por TODOS los niveles. Lo único que cambia entre un nivel y
-## otro son estas variables (se editan en el Inspector del nodo raíz).
 
-## Número del nivel (para guardar el mejor puntaje y desbloquear el siguiente)
 @export var numero_nivel: int = 1
-## Cantidad de golpes "ideal" del nivel
 @export var par: int = 2
-## Escena que se abre con el botón SIGUIENTE. Vacío = es el último nivel
 @export_file("*.tscn") var siguiente_nivel: String = "res://nivel_2.tscn"
 
 @onready var hoyo: Area2D = $Hoyo

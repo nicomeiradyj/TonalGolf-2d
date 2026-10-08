@@ -17,13 +17,14 @@ Juego de mini golf 2D hecho en Godot 4.7, pensado para celular (vertical, 720x12
 | 1 | 2 | Cancha libre, para aprender |
 | 2 | 3 | Zigzag de dos paredes |
 | 3 | 4 | Tres paredes y un pilar rotado delante del hoyo |
+| 4 | - | Pantalla "Continuará" (`nivel_4.tscn`): fin del contenido de este checkpoint |
 
 Cada nivel se desbloquea al completar el anterior. El mejor puntaje de cada nivel se guarda en el dispositivo.
 
 ## Estructura
 - `nivel_1.gd`: script compartido por todos los niveles (`numero_nivel`, `par`, `siguiente_nivel` se editan en el Inspector).
 - `progreso.gd` (autoload `Progreso`): mejores puntajes, desbloqueo y ajustes.
-- `sonidos.gd` (autoload `Sonidos`): música de fondo (`assets/musica_chill.ogg`, en loop) y efectos de sonido.
+- `sonidos.gd` (autoload `Sonidos`): música de fondo (`assets/musica_golf.ogg`, en loop) y efectos de sonido.
 - `hud.tscn`: contador de golpes, par, mejor puntaje y menú de pausa.
 
 ## Crear un nivel nuevo

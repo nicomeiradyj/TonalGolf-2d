@@ -36,7 +36,7 @@ size = Vector2(220, 220)
 script = ExtResource("1_2lask")
 numero_nivel = 3
 par = 4
-siguiente_nivel = ""
+siguiente_nivel = "res://nivel_4.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
 zoom = Vector2(0.5, 0.5)

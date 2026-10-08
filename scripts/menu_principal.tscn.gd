@@ -6,6 +6,9 @@ extends Button
 # Número del nivel (para saber si está desbloqueado y mostrar el mejor puntaje)
 @export var numero_nivel: int = 1
 
+# Marca el botón como contenido futuro (nivel 4 "Continuará")
+@export var proximamente: bool = false
+
 # Permite arrastrar el audio de click desde el Inspector
 @export var sonido_click: AudioStream
 
@@ -20,6 +23,8 @@ func _ready() -> void:
 	var mejor := Progreso.mejor(numero_nivel)
 	if not desbloqueado:
 		_agregar_etiqueta("BLOQUEADO")
+	elif proximamente:
+		_agregar_etiqueta("PRONTO")
 	elif mejor > 0:
 		_agregar_etiqueta("MEJOR: %d" % mejor)
 

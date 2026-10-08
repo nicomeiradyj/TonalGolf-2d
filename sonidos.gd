@@ -12,8 +12,8 @@ const RUTAS := {
 
 ## Música de fondo (OGG en loop). Para cambiarla, reemplazá este archivo
 ## o cambiá la ruta.
-const RUTA_MUSICA := "res://assets/musica_chill.ogg"
-const VOLUMEN_MUSICA_DB := -9.0
+const RUTA_MUSICA := "res://assets/musica_golf.ogg"
+const VOLUMEN_MUSICA_DB := -12.0
 
 var _streams: Dictionary = {}
 var _musica: AudioStreamPlayer

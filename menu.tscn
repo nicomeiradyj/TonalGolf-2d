@@ -51,12 +51,12 @@ anchors_preset = 0
 offset_left = 80.0
 offset_top = 320.0
 offset_right = 640.0
-offset_bottom = 940.0
+offset_bottom = 1020.0
 
 [node name="BorderPanel" type="ColorRect" parent="PanelSeleccion" unique_id=1197384857]
 layout_mode = 0
 offset_right = 560.0
-offset_bottom = 620.0
+offset_bottom = 700.0
 color = Color(0.3372549, 0.8, 0.5411765, 1)
 
 [node name="FondoPanel" type="ColorRect" parent="PanelSeleccion" unique_id=1214687602]
@@ -64,7 +64,7 @@ layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 556.0
-offset_bottom = 616.0
+offset_bottom = 696.0
 color = Color(0.019607844, 0.039215688, 0.023529412, 1)
 
 [node name="Subtitulo" type="Label" parent="PanelSeleccion" unique_id=131448053]
@@ -92,7 +92,7 @@ layout_mode = 0
 offset_left = 60.0
 offset_top = 140.0
 offset_right = 500.0
-offset_bottom = 570.0
+offset_bottom = 660.0
 theme_override_constants/separation = 28
 alignment = 1
 
@@ -129,12 +129,24 @@ numero_nivel = 3
 nivel_a_cargar = "res://nivel_3.tscn"
 sonido_click = ExtResource("3_4hy44")
 
+[node name="BtnNivel4" type="Button" parent="PanelSeleccion/VBoxBotones"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 48
+text = "04"
+script = ExtResource("2_mae5d")
+numero_nivel = 4
+proximamente = true
+nivel_a_cargar = "res://nivel_4.tscn"
+sonido_click = ExtResource("3_4hy44")
+
 [node name="BtnSonido" type="Button" parent="."]
 layout_mode = 0
 offset_left = 80.0
-offset_top = 990.0
+offset_top = 1080.0
 offset_right = 640.0
-offset_bottom = 1080.0
+offset_bottom = 1170.0
 theme_override_fonts/font = ExtResource("1_lti8b")
 theme_override_font_sizes/font_size = 32
 text = "SONIDO: SI"

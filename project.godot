@@ -14,19 +14,35 @@ config/name="TonalGolf 2d"
 run/main_scene="uid://cbwe46rbretlc"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+config/quit_on_go_back=false
+
+[autoload]
+
+Progreso="*res://progreso.gd"
+Sonidos="*res://sonidos.gd"
 
 [display]
 
 window/size/viewport_width=720
 window/size/viewport_height=1280
+window/size/window_width_override=450
+window/size/window_height_override=800
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 window/handheld/orientation=1
+
+[input_devices]
+
+pointing/emulate_mouse_from_touch=true
 
 [physics]
 
 3d/physics_engine="Jolt Physics"
 
 [rendering]
+
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.011764706, 0.06666667, 0.03137255, 1)
 
 rendering_device/driver.windows="d3d12"

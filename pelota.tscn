@@ -14,8 +14,12 @@ load_path = "res://.godot/imported/spritePelota.png-28305b55444b609ffa4bfe799bca
 radius = 63.0
 
 [node name="Pelota" type="RigidBody2D" unique_id=351689159]
+z_index = 1
 physics_material_override = SubResource("PhysicsMaterial_2lask")
 gravity_scale = 0.0
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 4
 linear_damp = 1.5
 script = ExtResource("1_0okw3")
 power_multiplier = 8.0
@@ -30,6 +34,7 @@ position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_8w0r3")
 
 [node name="LineaApuntado" type="Line2D" parent="." unique_id=1128593975]
+z_index = 5
 width = 7.0
 default_color = Color(1, 0, 0, 1)
 begin_cap_mode = 2

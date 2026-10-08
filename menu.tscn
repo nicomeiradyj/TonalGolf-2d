@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://b6kdap2sdhueq" path="res://assets/w3-ip.ttf" id="1_lti8b"]
 [ext_resource type="Script" uid="uid://bxy4nxwgcyjew" path="res://scripts/menu_principal.tscn.gd" id="2_mae5d"]
 [ext_resource type="AudioStream" uid="uid://bnpquolboiwul" path="res://assets/menu_click.mp3" id="3_4hy44"]
+[ext_resource type="Script" path="res://scripts/boton_sonido.gd" id="4_snd"]
 
 [node name="MenuPrincipal" type="Control" unique_id=1356918629]
 layout_mode = 3
@@ -102,6 +103,7 @@ theme_override_fonts/font = ExtResource("1_lti8b")
 theme_override_font_sizes/font_size = 48
 text = "01"
 script = ExtResource("2_mae5d")
+numero_nivel = 1
 nivel_a_cargar = "uid://dy7on1h07p4jj"
 sonido_click = ExtResource("3_4hy44")
 
@@ -112,6 +114,7 @@ theme_override_fonts/font = ExtResource("1_lti8b")
 theme_override_font_sizes/font_size = 48
 text = "02"
 script = ExtResource("2_mae5d")
+numero_nivel = 2
 nivel_a_cargar = "res://nivel_2.tscn"
 sonido_click = ExtResource("3_4hy44")
 
@@ -122,5 +125,17 @@ theme_override_fonts/font = ExtResource("1_lti8b")
 theme_override_font_sizes/font_size = 48
 text = "03"
 script = ExtResource("2_mae5d")
+numero_nivel = 3
 nivel_a_cargar = "res://nivel_3.tscn"
 sonido_click = ExtResource("3_4hy44")
+
+[node name="BtnSonido" type="Button" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 990.0
+offset_right = 640.0
+offset_bottom = 1080.0
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 32
+text = "SONIDO: SI"
+script = ExtResource("4_snd")

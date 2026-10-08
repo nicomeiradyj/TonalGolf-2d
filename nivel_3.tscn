@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dy7on1h07p4jj"]
+[gd_scene format=3]
 
 [ext_resource type="Script" uid="uid://dmkkgknnt4pfu" path="res://nivel_1.gd" id="1_2lask"]
 [ext_resource type="PackedScene" uid="uid://5lhwwyyqub60" path="res://pelota.tscn" id="1_xi31o"]
@@ -20,14 +20,29 @@ size = Vector2(60, 2560)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4e15o"]
 size = Vector2(60, 2560)
 
-[node name="Nivel1" type="Node2D" unique_id=1215263058]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs1"]
+size = Vector2(700, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs2"]
+size = Vector2(700, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs3"]
+size = Vector2(700, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs4"]
+size = Vector2(220, 220)
+
+[node name="Nivel3" type="Node2D" unique_id=1215263058]
 script = ExtResource("1_2lask")
+numero_nivel = 3
+par = 4
+siguiente_nivel = ""
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
 zoom = Vector2(0.5, 0.5)
 
 [node name="Pelota" parent="." unique_id=351689159 instance=ExtResource("1_xi31o")]
-position = Vector2(0, 900)
+position = Vector2(0, 1000)
 
 [node name="Bordes" type="StaticBody2D" parent="." unique_id=1924284087]
 
@@ -77,8 +92,59 @@ texture = ExtResource("3_320mp")
 region_enabled = true
 region_rect = Rect2(0, 0, 60, 2560)
 
+[node name="Obstaculos" type="Node2D" parent="."]
+
+[node name="Obstaculo1" type="StaticBody2D" parent="Obstaculos"]
+position = Vector2(-310, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo1"]
+shape = SubResource("RectangleShape2D_obs1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo1"]
+texture_repeat = 2
+texture = ExtResource("3_320mp")
+region_enabled = true
+region_rect = Rect2(0, 0, 700, 60)
+
+[node name="Obstaculo2" type="StaticBody2D" parent="Obstaculos"]
+position = Vector2(310, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo2"]
+shape = SubResource("RectangleShape2D_obs2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+texture_repeat = 2
+texture = ExtResource("3_320mp")
+region_enabled = true
+region_rect = Rect2(0, 0, 700, 60)
+
+[node name="Obstaculo3" type="StaticBody2D" parent="Obstaculos"]
+position = Vector2(-310, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo3"]
+shape = SubResource("RectangleShape2D_obs3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+texture_repeat = 2
+texture = ExtResource("3_320mp")
+region_enabled = true
+region_rect = Rect2(0, 0, 700, 60)
+
+[node name="Obstaculo4" type="StaticBody2D" parent="Obstaculos"]
+position = Vector2(0, -650)
+rotation = 0.7853982
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo4"]
+shape = SubResource("RectangleShape2D_obs4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo4"]
+texture_repeat = 2
+texture = ExtResource("3_320mp")
+region_enabled = true
+region_rect = Rect2(0, 0, 220, 220)
+
 [node name="Hoyo" parent="." unique_id=597095437 instance=ExtResource("3_m2gv8")]
-position = Vector2(0, -900)
+position = Vector2(0, -1000)
 
 [node name="Campo" type="Sprite2D" parent="." unique_id=1451714435]
 z_index = -10

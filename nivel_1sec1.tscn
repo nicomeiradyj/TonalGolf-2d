@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://mttqnkhfeap"]
+
+[ext_resource type="Script" uid="uid://dmkkgknnt4pfu" path="res://nivel_1.gd" id="1_2lask"]
+[ext_resource type="PackedScene" uid="uid://5lhwwyyqub60" path="res://pelota.tscn" id="1_xi31o"]
+[ext_resource type="Texture2D" uid="uid://c78v8xalp14ll" path="res://assets/bordeMadera.jpg" id="3_320mp"]
+[ext_resource type="PackedScene" uid="uid://deidyefrvlptn" path="res://hoyo.tscn" id="3_m2gv8"]
+[ext_resource type="Texture2D" uid="uid://bk04x8roo8s7y" path="res://assets/craftpix-net-657149-free-elven-land-game-battle-backgrounds/PNG/game_background_1/game_background_1.png" id="5_r81sy"]
+[ext_resource type="PackedScene" uid="uid://cmp1lowbjy75e" path="res://pantalla_victoria.tscn" id="6_kd3qp"]
+[ext_resource type="PackedScene" path="res://hud.tscn" id="7_hud"]
+[ext_resource type="Texture2D" uid="uid://bdglsoe2bmq8t" path="res://assets/Tiled.png" id="8_r81sy"]
+[ext_resource type="Texture2D" uid="uid://bsptrs6iw0omo" path="res://assets/craftpix-net-657149-free-elven-land-game-battle-backgrounds/PNG/game_background_1/layers/ground_decor.png" id="9_fxqjy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
+size = Vector2(1440, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4t55"]
+size = Vector2(1440, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7mgy"]
+size = Vector2(60, 2560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e15o"]
+size = Vector2(60, 2560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs1"]
+size = Vector2(647, 60)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fxqjy"]
+load_path = "res://.godot/imported/bordeMadera.jpg-21ede3fa75ea36c9c78d11956d156a70.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs2"]
+size = Vector2(696, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs3"]
+size = Vector2(700, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs4"]
+size = Vector2(220, 220)
+
+[node name="Nivel4" type="Node2D" unique_id=1215263058]
+script = ExtResource("1_2lask")
+numero_nivel = 3
+par = 4
+siguiente_nivel = "res://nivel_4.tscn"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Pelota" parent="." unique_id=351689159 instance=ExtResource("1_xi31o")]
+position = Vector2(-505, 1065)
+
+[node name="Bordes" type="StaticBody2D" parent="." unique_id=1924284087]
+
+[node name="ParedArriba" type="CollisionShape2D" parent="Bordes" unique_id=1413403532]
+position = Vector2(0, -1250)
+shape = SubResource("RectangleShape2D_8w0r3")
+
+[node name="ParedAbajo" type="CollisionShape2D" parent="Bordes" unique_id=362648664]
+position = Vector2(0, 1245)
+shape = SubResource("RectangleShape2D_h4t55")
+
+[node name="ParedIzquierda" type="CollisionShape2D" parent="Bordes" unique_id=831670733]
+position = Vector2(-690, 0)
+shape = SubResource("RectangleShape2D_w7mgy")
+
+[node name="ParedDerecha" type="CollisionShape2D" parent="Bordes" unique_id=967012800]
+position = Vector2(690, 0)
+shape = SubResource("RectangleShape2D_4e15o")
+
+[node name="MaderaIzquierda" type="Sprite2D" parent="Bordes" unique_id=1124595221]
+texture_repeat = 2
+position = Vector2(-690, 0)
+texture = ExtResource("3_320mp")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 2560)
+
+[node name="MaderaArriba" type="Sprite2D" parent="Bordes" unique_id=1257992350]
+texture_repeat = 2
+position = Vector2(0, -1250)
+rotation = 1.5707964
+texture = ExtResource("3_320mp")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1440)
+
+[node name="MaderaAbajo" type="Sprite2D" parent="Bordes" unique_id=1543714669]
+texture_repeat = 2
+position = Vector2(0, 1250)
+rotation = 1.5707964
+texture = ExtResource("3_320mp")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1440)
+
+[node name="MaderaDerecha" type="Sprite2D" parent="Bordes" unique_id=1070977807]
+texture_repeat = 2
+position = Vector2(690, 0)
+texture = ExtResource("3_320mp")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 2560)
+
+[node name="Obstaculos" type="Node2D" parent="." unique_id=1971356393]
+
+[node name="Obstaculo1" type="StaticBody2D" parent="Obstaculos" unique_id=146113088]
+position = Vector2(-311, 813)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo1" unique_id=345300576]
+position = Vector2(-26.5, 0)
+shape = SubResource("RectangleShape2D_obs1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo1" unique_id=1843385155]
+texture_repeat = 2
+position = Vector2(-25.499994, 0.49999237)
+scale = Vector2(0.927143, 1.0166664)
+texture = SubResource("CompressedTexture2D_fxqjy")
+region_enabled = true
+region_rect = Rect2(0, 0, 700, 60)
+
+[node name="Obstaculo2" type="StaticBody2D" parent="Obstaculos" unique_id=1198774357]
+position = Vector2(310, 406)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo2" unique_id=1548823022]
+position = Vector2(45, 176)
+rotation = 0.4171337
+shape = SubResource("RectangleShape2D_obs2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo2" unique_id=1883043816]
+texture_repeat = 2
+position = Vector2(42, 172)
+rotation = 0.4171337
+texture = ExtResource("3_320mp")
+region_enabled = true
+region_rect = Rect2(0, 0, 700, 60)
+
+[node name="Obstaculo3" type="StaticBody2D" parent="Obstaculos" unique_id=1266066225]
+position = Vector2(-310, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo3" unique_id=422694453]
+shape = SubResource("RectangleShape2D_obs3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo3" unique_id=1080528806]
+texture_repeat = 2
+texture = ExtResource("3_320mp")
+region_enabled = true
+region_rect = Rect2(0, 0, 700, 60)
+
+[node name="Obstaculo4" type="StaticBody2D" parent="Obstaculos" unique_id=1584203154]
+position = Vector2(0, -650)
+rotation = 0.7853982
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo4" unique_id=380166231]
+shape = SubResource("RectangleShape2D_obs4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo4" unique_id=2120310639]
+texture_repeat = 2
+texture = ExtResource("3_320mp")
+region_enabled = true
+region_rect = Rect2(0, 0, 220, 220)
+
+[node name="Hoyo" parent="." unique_id=597095437 instance=ExtResource("3_m2gv8")]
+position = Vector2(0, -1000)
+
+[node name="Campo" type="Sprite2D" parent="." unique_id=1451714435]
+z_index = -10
+texture_repeat = 2
+position = Vector2(4.1307526, 15.144409)
+scale = Vector2(1.5895605, 2.4847417)
+texture = ExtResource("5_r81sy")
+region_enabled = true
+region_rect = Rect2(1710.8374, 818.74097, 868.5679, 1002.8828)
+
+[node name="PantallaVictoria" parent="." unique_id=1393267158 instance=ExtResource("6_kd3qp")]
+visible = false
+
+[node name="HUD" parent="." unique_id=1868276487 instance=ExtResource("7_hud")]
+visible = false
+
+[node name="Arboles" type="Node2D" parent="." unique_id=1945923729]
+
+[node name="Arbol1" type="Sprite2D" parent="Arboles" unique_id=1301552249]
+visible = false
+position = Vector2(118.75, 72.75)
+scale = Vector2(2.642857, 2.186567)
+texture = ExtResource("8_r81sy")
+region_enabled = true
+region_rect = Rect2(269.28925, 369.0027, 35.643738, 67.95264)
+
+[node name="Arbol2" type="Sprite2D" parent="Arboles" unique_id=396287476]
+visible = false
+position = Vector2(-495.625, 621.875)
+scale = Vector2(3.5785716, 2.958955)
+texture = ExtResource("8_r81sy")
+region_enabled = true
+region_rect = Rect2(269.28925, 369.0027, 35.643738, 67.95264)
+
+[node name="Arbol3" type="Sprite2D" parent="Arboles" unique_id=1611178209]
+visible = false
+position = Vector2(251, 1027)
+scale = Vector2(4.9321423, 2.9048505)
+texture = ExtResource("8_r81sy")
+region_enabled = true
+region_rect = Rect2(269.28925, 369.0027, 35.643738, 67.95264)
+
+[node name="Arbol4" type="Sprite2D" parent="Arboles" unique_id=608897108]
+position = Vector2(-182, 113)
+scale = Vector2(1.3003632, 1.2298167)
+texture = ExtResource("9_fxqjy")
+region_enabled = true
+region_rect = Rect2(2607.0754, 1512.7981, 869.7449, 575.7029)
+
+[node name="Arbol5" type="Sprite2D" parent="Arboles" unique_id=1949742433]
+position = Vector2(430, 999)
+scale = Vector2(1.3003632, 1.2298167)
+texture = ExtResource("9_fxqjy")
+region_enabled = true
+region_rect = Rect2(2607.0754, 1512.7981, 326.76, 575.7029)
+
+[node name="Arbol6" type="Sprite2D" parent="Arboles" unique_id=645450506]
+position = Vector2(411, -492)
+scale = Vector2(1.3003632, 1.2298167)
+texture = ExtResource("9_fxqjy")
+region_enabled = true
+region_rect = Rect2(2607.0754, 1512.7981, 326.76, 575.7029)

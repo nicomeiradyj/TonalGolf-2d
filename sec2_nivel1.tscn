@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://mttqnkhfeap"]
+
+[ext_resource type="Script" uid="uid://dmkkgknnt4pfu" path="res://nivel_1.gd" id="1_1ffvf"]
+[ext_resource type="PackedScene" uid="uid://5lhwwyyqub60" path="res://pelota.tscn" id="2_k1aqv"]
+[ext_resource type="Texture2D" uid="uid://c78v8xalp14ll" path="res://assets/bordeMadera.jpg" id="3_2vwo2"]
+[ext_resource type="PackedScene" uid="uid://deidyefrvlptn" path="res://hoyo.tscn" id="4_nupib"]
+[ext_resource type="Texture2D" uid="uid://b5fkvwquaoxos" path="res://assets/grass2d.png" id="5_mgojs"]
+[ext_resource type="PackedScene" uid="uid://cmp1lowbjy75e" path="res://pantalla_victoria.tscn" id="6_ffwal"]
+[ext_resource type="PackedScene" path="res://hud.tscn" id="7_ofpb4"]
+[ext_resource type="Texture2D" uid="uid://bdglsoe2bmq8t" path="res://assets/Tiled.png" id="8_qsikp"]
+[ext_resource type="PackedScene" uid="uid://r5miulvtlvjq" path="res://barro.tscn" id="9_1ffvf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
+size = Vector2(1440, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4t55"]
+size = Vector2(1440, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7mgy"]
+size = Vector2(60, 2560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e15o"]
+size = Vector2(60, 2560)
+
+[node name="S2Nivel1" type="Node2D" unique_id=1215263058]
+script = ExtResource("1_1ffvf")
+numero_nivel = 5
+nombre_nivel = "2-1"
+par = 3
+siguiente_nivel = ""
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Pelota" parent="." unique_id=351689159 instance=ExtResource("2_k1aqv")]
+position = Vector2(0, 1065)
+
+[node name="Bordes" type="StaticBody2D" parent="." unique_id=1924284087]
+
+[node name="ParedArriba" type="CollisionShape2D" parent="Bordes" unique_id=1413403532]
+position = Vector2(0, -1250)
+shape = SubResource("RectangleShape2D_8w0r3")
+
+[node name="ParedAbajo" type="CollisionShape2D" parent="Bordes" unique_id=362648664]
+position = Vector2(0, 1245)
+shape = SubResource("RectangleShape2D_h4t55")
+
+[node name="ParedIzquierda" type="CollisionShape2D" parent="Bordes" unique_id=831670733]
+position = Vector2(-690, 0)
+shape = SubResource("RectangleShape2D_w7mgy")
+
+[node name="ParedDerecha" type="CollisionShape2D" parent="Bordes" unique_id=967012800]
+position = Vector2(690, 0)
+shape = SubResource("RectangleShape2D_4e15o")
+
+[node name="MaderaIzquierda" type="Sprite2D" parent="Bordes" unique_id=1124595221]
+texture_repeat = 2
+position = Vector2(-690, 0)
+texture = ExtResource("3_2vwo2")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 2560)
+
+[node name="MaderaArriba" type="Sprite2D" parent="Bordes" unique_id=1257992350]
+texture_repeat = 2
+position = Vector2(0, -1250)
+rotation = 1.5707964
+texture = ExtResource("3_2vwo2")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1440)
+
+[node name="MaderaAbajo" type="Sprite2D" parent="Bordes" unique_id=1543714669]
+texture_repeat = 2
+position = Vector2(0, 1250)
+rotation = 1.5707964
+texture = ExtResource("3_2vwo2")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1440)
+
+[node name="MaderaDerecha" type="Sprite2D" parent="Bordes" unique_id=1070977807]
+texture_repeat = 2
+position = Vector2(690, 0)
+texture = ExtResource("3_2vwo2")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 2560)
+
+[node name="Obstaculos" type="Node2D" parent="." unique_id=1971356393]
+
+[node name="Hoyo" parent="." unique_id=597095437 instance=ExtResource("4_nupib")]
+position = Vector2(0, -1000)
+
+[node name="Campo" type="Sprite2D" parent="." unique_id=1451714435]
+z_index = -10
+texture_repeat = 2
+scale = Vector2(1.5895605, 2.4847417)
+texture = ExtResource("5_mgojs")
+region_enabled = true
+region_rect = Rect2(1710.8374, 818.74097, 868.5679, 1002.8828)
+
+[node name="PantallaVictoria" parent="." unique_id=1393267158 instance=ExtResource("6_ffwal")]
+visible = false
+
+[node name="HUD" parent="." unique_id=1868276487 instance=ExtResource("7_ofpb4")]
+visible = false
+
+[node name="Arboles" type="Node2D" parent="." unique_id=1945923729]
+
+[node name="Arbol1" type="Sprite2D" parent="Arboles" unique_id=1301552249]
+visible = false
+position = Vector2(118.75, 72.75)
+scale = Vector2(2.642857, 2.186567)
+texture = ExtResource("8_qsikp")
+region_enabled = true
+region_rect = Rect2(269.28925, 369.0027, 35.643738, 67.95264)
+
+[node name="Arbol2" type="Sprite2D" parent="Arboles" unique_id=396287476]
+visible = false
+position = Vector2(-495.625, 621.875)
+scale = Vector2(3.5785716, 2.958955)
+texture = ExtResource("8_qsikp")
+region_enabled = true
+region_rect = Rect2(269.28925, 369.0027, 35.643738, 67.95264)
+
+[node name="Arbol3" type="Sprite2D" parent="Arboles" unique_id=1611178209]
+visible = false
+position = Vector2(251, 1027)
+scale = Vector2(4.9321423, 2.9048505)
+texture = ExtResource("8_qsikp")
+region_enabled = true
+region_rect = Rect2(269.28925, 369.0027, 35.643738, 67.95264)
+
+[node name="Barro" type="Node" parent="." unique_id=807801063]
+
+[node name="Charco1" parent="Barro" unique_id=554240050 instance=ExtResource("9_1ffvf")]
+
+[node name="Charco2" parent="Barro" unique_id=2053307531 instance=ExtResource("9_1ffvf")]
+position = Vector2(-461, -449)
+
+[node name="Charco3" parent="Barro" unique_id=2134656275 instance=ExtResource("9_1ffvf")]
+position = Vector2(462, -885)
+
+[node name="Charco4" parent="Barro" unique_id=1791040673 instance=ExtResource("9_1ffvf")]
+position = Vector2(453, 571)

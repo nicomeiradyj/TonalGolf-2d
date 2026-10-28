@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var numero_nivel: int = 1
+@export var nombre_nivel: String = ""
 @export var par: int = 2
 @export_file("*.tscn") var siguiente_nivel: String = "res://nivel_2.tscn"
 
@@ -14,7 +15,8 @@ func _ready() -> void:
 	get_tree().paused = false
 	hoyo.pelota_embocada.connect(_on_pelota_embocada)
 	pelota.golpe_dado.connect(hud.actualizar_golpes)
-	hud.configurar(numero_nivel, par, Progreso.mejor(numero_nivel))
+	var titulo := nombre_nivel if nombre_nivel != "" else str(numero_nivel)
+	hud.configurar(titulo, par, Progreso.mejor(numero_nivel))
 	hud.actualizar_golpes(0)
 
 

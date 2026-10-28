@@ -27,7 +27,7 @@ script = ExtResource("1_1ffvf")
 numero_nivel = 5
 nombre_nivel = "2-1"
 par = 3
-siguiente_nivel = "uid://b20t6qjv25pt8"
+siguiente_nivel = ""
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
 zoom = Vector2(0.5, 0.5)

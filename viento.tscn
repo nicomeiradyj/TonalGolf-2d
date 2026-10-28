@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c1i2inicotfvi"]
+
+[ext_resource type="Script" uid="uid://bsskngw8wkono" path="res://viento.gd" id="1_ge1hy"]
+
+[node name="Viento" type="Area2D" unique_id=1677115453]
+script = ExtResource("1_ge1hy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2003631610]

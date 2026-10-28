@@ -28,8 +28,8 @@ func _ready() -> void:
 	_actualizar_texto_sonido()
 
 
-func configurar(numero_nivel: int, par: int, mejor: int) -> void:
-	label_nivel.text = "NIVEL %d" % numero_nivel
+func configurar(nombre: String, par: int, mejor: int) -> void:
+	label_nivel.text = "NIVEL %s" % nombre
 	var info := "PAR %d" % par
 	if mejor > 0:
 		info += "   MEJOR %d" % mejor

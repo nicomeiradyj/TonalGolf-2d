@@ -43,7 +43,7 @@ size = Vector2(32.841312, 25.753534)
 script = ExtResource("1_2lask")
 numero_nivel = 4
 par = 4
-siguiente_nivel = "res://nivel_4.tscn"
+siguiente_nivel = "uid://mttqnkhfeap"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
 zoom = Vector2(0.5, 0.5)
@@ -223,6 +223,7 @@ region_rect = Rect2(0, 0, 220, 220)
 
 [node name="Hoyo" parent="." unique_id=597095437 instance=ExtResource("3_m2gv8")]
 position = Vector2(490, -1021)
+fuerza_atraccion = 1600.0
 
 [node name="Campo" type="Sprite2D" parent="." unique_id=1451714435]
 z_index = -10

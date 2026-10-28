@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://r5miulvtlvjq"]
+
+[ext_resource type="Texture2D" uid="uid://djbgdldjg2jsv" path="res://assets/barro_tonalgolf-2d.png" id="1_urao6"]
+
+[node name="Charco1" type="Area2D" unique_id=554240050]
+linear_damp_space_override = 1
+linear_damp = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1044205230]
+scale = Vector2(0.473, 0.6)
+texture = ExtResource("1_urao6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=465475448]
+polygon = PackedVector2Array(-1, 0, -53, -54, -62, -17, -113, -16, -116, 9, -89, 15, -79, 37, -20, 48, 45, 43, 98, 37, 114, 25, 80, 11, 91, -9, 98, -39, 58, -37, 6, -42, -47, -57)

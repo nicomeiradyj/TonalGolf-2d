@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5lhwwyyqub60"]
 
 [ext_resource type="Script" uid="uid://8d5fiul6oy4p" path="res://pelota.gd" id="1_0okw3"]
-[ext_resource type="Texture2D" uid="uid://bes7b2w33ypsq" path="res://punta_flecha.png" id="2_0okw3"]
+[ext_resource type="Texture2D" uid="uid://bes7b2w33ypsq" path="res://assets/punta_flecha.png" id="2_0okw3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2lask"]
 friction = 0.0

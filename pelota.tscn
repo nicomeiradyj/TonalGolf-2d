@@ -15,6 +15,7 @@ radius = 63.0
 
 [node name="Pelota" type="RigidBody2D" unique_id=351689159]
 z_index = 1
+position = Vector2(0, -3)
 physics_material_override = SubResource("PhysicsMaterial_2lask")
 gravity_scale = 0.0
 lock_rotation = true

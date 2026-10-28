@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bgyvoa0hqd6kt"]
 
 [ext_resource type="Script" uid="uid://dmkkgknnt4pfu" path="res://nivel_1.gd" id="1_2lask"]
 [ext_resource type="PackedScene" uid="uid://5lhwwyyqub60" path="res://pelota.tscn" id="1_xi31o"]
@@ -24,7 +24,7 @@ size = Vector2(60, 2560)
 size = Vector2(700, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obs2"]
-size = Vector2(700, 60)
+size = Vector2(351, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obs3"]
 size = Vector2(700, 60)
@@ -92,52 +92,55 @@ texture = ExtResource("3_320mp")
 region_enabled = true
 region_rect = Rect2(0, 0, 60, 2560)
 
-[node name="Obstaculos" type="Node2D" parent="."]
+[node name="Obstaculos" type="Node2D" parent="." unique_id=1236875975]
 
-[node name="Obstaculo1" type="StaticBody2D" parent="Obstaculos"]
+[node name="Obstaculo1" type="StaticBody2D" parent="Obstaculos" unique_id=1364999435]
 position = Vector2(-310, 600)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo1" unique_id=1639401480]
 shape = SubResource("RectangleShape2D_obs1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo1"]
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo1" unique_id=1667433947]
 texture_repeat = 2
 texture = ExtResource("3_320mp")
 region_enabled = true
 region_rect = Rect2(0, 0, 700, 60)
 
-[node name="Obstaculo2" type="StaticBody2D" parent="Obstaculos"]
+[node name="Obstaculo2" type="StaticBody2D" parent="Obstaculos" unique_id=1899993821]
 position = Vector2(310, 200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo2" unique_id=1666564236]
+position = Vector2(-172, 0)
 shape = SubResource("RectangleShape2D_obs2")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo2" unique_id=231717882]
 texture_repeat = 2
+position = Vector2(-166, 0)
+scale = Vector2(0.5257143, 1)
 texture = ExtResource("3_320mp")
 region_enabled = true
 region_rect = Rect2(0, 0, 700, 60)
 
-[node name="Obstaculo3" type="StaticBody2D" parent="Obstaculos"]
+[node name="Obstaculo3" type="StaticBody2D" parent="Obstaculos" unique_id=2025518645]
 position = Vector2(-310, -200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo3" unique_id=1953847353]
 shape = SubResource("RectangleShape2D_obs3")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo3" unique_id=935325120]
 texture_repeat = 2
 texture = ExtResource("3_320mp")
 region_enabled = true
 region_rect = Rect2(0, 0, 700, 60)
 
-[node name="Obstaculo4" type="StaticBody2D" parent="Obstaculos"]
+[node name="Obstaculo4" type="StaticBody2D" parent="Obstaculos" unique_id=158700689]
 position = Vector2(0, -650)
 rotation = 0.7853982
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo4" unique_id=1650584395]
 shape = SubResource("RectangleShape2D_obs4")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo4"]
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo4" unique_id=1300182488]
 texture_repeat = 2
 texture = ExtResource("3_320mp")
 region_enabled = true
@@ -155,4 +158,4 @@ region_rect = Rect2(0, 0, 1440, 2560)
 
 [node name="PantallaVictoria" parent="." unique_id=1393267158 instance=ExtResource("6_kd3qp")]
 
-[node name="HUD" parent="." instance=ExtResource("7_hud")]
+[node name="HUD" parent="." unique_id=368355599 instance=ExtResource("7_hud")]

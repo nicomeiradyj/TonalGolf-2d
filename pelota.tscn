@@ -19,11 +19,12 @@ position = Vector2(0, -3)
 physics_material_override = SubResource("PhysicsMaterial_2lask")
 gravity_scale = 0.0
 lock_rotation = true
+continuous_cd = 1
 contact_monitor = true
 max_contacts_reported = 4
-linear_damp = 1.5
+linear_damp = 0.7
 script = ExtResource("1_0okw3")
-power_multiplier = 8.0
+power_multiplier = 10.0
 max_aim_length = 250.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=564782816]

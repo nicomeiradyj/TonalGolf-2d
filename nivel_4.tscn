@@ -28,7 +28,7 @@ size = Vector2(700, 60)
 size = Vector2(705, 55)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r81sy"]
-size = Vector2(566.5, 52.125)
+size = Vector2(299, 52.125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obs3"]
 size = Vector2(700, 60)
@@ -37,10 +37,7 @@ size = Vector2(700, 60)
 size = Vector2(194.45438, 188.7975)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fxqjy"]
-size = Vector2(32.841312, 35.724964)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs2"]
-size = Vector2(321.96432, 70.70911)
+size = Vector2(32.841312, 25.753534)
 
 [node name="Nivel4" type="Node2D" unique_id=1215263058]
 script = ExtResource("1_2lask")
@@ -104,18 +101,6 @@ region_rect = Rect2(0, 0, 60, 2560)
 
 [node name="Obstaculos" type="Node2D" parent="." unique_id=687557746]
 
-[node name="Obstaculo1" type="StaticBody2D" parent="Obstaculos" unique_id=2053332958]
-position = Vector2(-310, 772)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo1" unique_id=1507866235]
-shape = SubResource("RectangleShape2D_obs1")
-
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo1" unique_id=455443629]
-texture_repeat = 2
-texture = ExtResource("3_320mp")
-region_enabled = true
-region_rect = Rect2(0, 0, 700, 60)
-
 [node name="Obstaculo5" type="StaticBody2D" parent="Obstaculos" unique_id=683368027]
 position = Vector2(332, 697)
 rotation = -1.5601485
@@ -146,13 +131,13 @@ region_rect = Rect2(0, 0, 700, 60)
 position = Vector2(310, -840)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo7" unique_id=2099292490]
-position = Vector2(79.25, -1.0625)
+position = Vector2(-309.5, -1.0625)
 shape = SubResource("RectangleShape2D_r81sy")
 
 [node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo7" unique_id=1302917379]
 texture_repeat = 2
-position = Vector2(75.5, -3)
-scale = Vector2(0.7842857, 0.9)
+position = Vector2(-307, -3)
+scale = Vector2(0.4342857, 0.9)
 texture = ExtResource("3_320mp")
 region_enabled = true
 region_rect = Rect2(0, 0, 700, 60)
@@ -208,15 +193,16 @@ rotation = 0.7853982
 scale = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo10" unique_id=277643524]
-position = Vector2(0.54066706, 201.02348)
+position = Vector2(25.594406, 226.33752)
 rotation = -0.78022975
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_fxqjy")
 
 [node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo10" unique_id=1868116658]
 texture_repeat = 2
-position = Vector2(0, 197.98991)
+position = Vector2(24.265503, 224.80293)
 rotation = -0.73556477
+scale = Vector2(1, 0.8506773)
 texture = ExtResource("4_r81sy")
 region_enabled = true
 region_rect = Rect2(416.86328, 459.17126, 33.002502, 38.24591)
@@ -235,28 +221,13 @@ texture = ExtResource("3_320mp")
 region_enabled = true
 region_rect = Rect2(0, 0, 220, 220)
 
-[node name="Obstaculo8" type="StaticBody2D" parent="Obstaculos" unique_id=386483493]
-position = Vector2(26, -937)
-rotation = 0.7785244
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo8" unique_id=802529541]
-position = Vector2(-10.768188, -8.868835)
-shape = SubResource("RectangleShape2D_obs2")
-
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo8" unique_id=1214457701]
-texture_repeat = 2
-position = Vector2(-24.683214, -8.423758)
-scale = Vector2(0.49661955, 1.2612165)
-texture = ExtResource("3_320mp")
-region_enabled = true
-region_rect = Rect2(0, 0, 700, 60)
-
 [node name="Hoyo" parent="." unique_id=597095437 instance=ExtResource("3_m2gv8")]
 position = Vector2(490, -1021)
 
 [node name="Campo" type="Sprite2D" parent="." unique_id=1451714435]
 z_index = -10
 texture_repeat = 2
+position = Vector2(1, 9)
 texture = ExtResource("4_m2gv8")
 region_enabled = true
 region_rect = Rect2(0, 0, 1440, 2560)

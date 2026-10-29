@@ -123,5 +123,11 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1440, 2560)
 
 [node name="PantallaVictoria" parent="." unique_id=1393267158 instance=ExtResource("6_kd3qp")]
+visible = false
 
+<<<<<<< Updated upstream
 [node name="HUD" parent="." instance=ExtResource("7_hud")]
+=======
+[node name="HUD" parent="." unique_id=1718368698 instance=ExtResource("7_hud")]
+visible = false
+>>>>>>> Stashed changes

@@ -99,7 +99,6 @@ region_enabled = true
 region_rect = Rect2(1710.8374, 818.74097, 868.5679, 1002.8828)
 
 [node name="PantallaVictoria" parent="." unique_id=1393267158 instance=ExtResource("6_ffwal")]
-visible = false
 
 [node name="HUD" parent="." unique_id=1868276487 instance=ExtResource("7_ofpb4")]
 

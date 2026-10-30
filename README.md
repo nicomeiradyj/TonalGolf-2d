@@ -25,6 +25,11 @@ Al completar el último nivel (3-4) el botón pasa a `VER RESULTADOS` y abre `pa
 hoyos en uno, niveles con par o mejor, récord hardcore y la grilla con el mejor resultado de cada nivel.
 Los pares y nombres están en `progreso.gd` (`PARES`, `NOMBRES`); si agregás niveles, sumalos ahí.
 
+## Estilo visual (sección 2 en adelante)
+Los niveles 2-1 a 2-3 usan el arte del compañero (rama MenuV2). 2-4 y toda la sección 3 usan el mismo estilo:
+bordes de madera ilustrada, fondo `pasto fondo2.jpg`, paredes hechas con hileras de rocas (solo visual: la colisión
+sigue siendo un rectángulo), flores y pasto de decoración y molinos junto al viento. Se genera con `gen_levels.py`.
+
 ## Carteles de terreno
 `cartel_zona.tscn` (propiedad `tipo`: `barro`, `viento` o `hielo`) muestra qué hace el terreno la primera vez que aparece
 (2-1 barro, 2-3 viento, 3-1 hielo) y desaparece al primer golpe. El nodo debe llamarse `Ayuda`.

@@ -11,6 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://c1i2inicotfvi" path="res://viento.tscn" id="9_viento"]
 [ext_resource type="PackedScene" path="res://hielo.tscn" id="10_hielo"]
 [ext_resource type="PackedScene" path="res://cartel_zona.tscn" id="11_cartel"]
+[ext_resource type="Texture2D" path="res://assets/assets editados/madera.png" id="12_madera2"]
+[ext_resource type="Texture2D" path="res://assets/assets editados/pasto fondo2.jpg" id="13_fondo"]
+[ext_resource type="Texture2D" path="res://assets/free-rocks-and-stones-top-down-pixel-art/PNG/Rocks_source.png" id="14_rocas"]
+[ext_resource type="Texture2D" path="res://assets/assets editados/flores.png" id="15_flores"]
+[ext_resource type="Texture2D" path="res://assets/assets editados/pasto.png" id="16_pasto"]
+[ext_resource type="Texture2D" path="res://assets/assets editados/molinos.png" id="17_molinos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arriba"]
 size = Vector2(1440, 60)
@@ -67,33 +73,37 @@ shape = SubResource("RectangleShape2D_der")
 
 [node name="MaderaIzquierda" type="Sprite2D" parent="Bordes"]
 texture_repeat = 2
-position = Vector2(-690, 0)
-texture = ExtResource("3_madera")
+position = Vector2(-693.5, 22.50009)
+scale = Vector2(0.69105697, 3.0490081)
+texture = ExtResource("12_madera2")
 region_enabled = true
-region_rect = Rect2(0, 0, 60, 2560)
+region_rect = Rect2(1384.4121, 510.00024, 123.95874, 857.1422)
 
 [node name="MaderaArriba" type="Sprite2D" parent="Bordes"]
 texture_repeat = 2
-position = Vector2(0, -1250)
+position = Vector2(21.869358, -1252.7618)
 rotation = 1.5707964
-texture = ExtResource("3_madera")
+scale = Vector2(0.5212839, 1.5867532)
+texture = ExtResource("12_madera2")
 region_enabled = true
-region_rect = Rect2(0, 0, 60, 1440)
+region_rect = Rect2(1354.4724, 1406.2643, 150.11816, 872.9083)
 
 [node name="MaderaAbajo" type="Sprite2D" parent="Bordes"]
 texture_repeat = 2
-position = Vector2(0, 1250)
-rotation = 1.5707964
-texture = ExtResource("3_madera")
+position = Vector2(-11.1197815, 1232.2083)
+rotation = 3.1431947
+scale = Vector2(2.8157086, 0.6881768)
+texture = ExtResource("12_madera2")
 region_enabled = true
-region_rect = Rect2(0, 0, 60, 1440)
+region_rect = Rect2(830.24084, 2092.1602, 463.43066, 114.950195)
 
 [node name="MaderaDerecha" type="Sprite2D" parent="Bordes"]
 texture_repeat = 2
-position = Vector2(690, 0)
-texture = ExtResource("3_madera")
+position = Vector2(678, 2.9999695)
+scale = Vector2(0.8095238, 3)
+texture = ExtResource("12_madera2")
 region_enabled = true
-region_rect = Rect2(0, 0, 60, 2560)
+region_rect = Rect2(1374.0004, 496.45132, 126.50037, 856.6489)
 
 [node name="Obstaculos" type="Node2D" parent="."]
 
@@ -103,11 +113,48 @@ position = Vector2(380, 650)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo1"]
 shape = SubResource("RectangleShape2D_obs1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo1"]
-texture_repeat = 2
-texture = ExtResource("3_madera")
+[node name="Roca1" type="Sprite2D" parent="Obstaculos/Obstaculo1"]
+position = Vector2(-200, -4.2)
+scale = Vector2(1.523, 1.523)
+texture = ExtResource("14_rocas")
 region_enabled = true
-region_rect = Rect2(0, 0, 560, 60)
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca2" type="Sprite2D" parent="Obstaculos/Obstaculo1"]
+position = Vector2(-120, -4.6)
+scale = Vector2(1.652, 1.652)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca3" type="Sprite2D" parent="Obstaculos/Obstaculo1"]
+position = Vector2(-40, 4.2)
+scale = Vector2(1.504, 1.504)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca4" type="Sprite2D" parent="Obstaculos/Obstaculo1"]
+position = Vector2(40, 1)
+scale = Vector2(1.789, 1.789)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca5" type="Sprite2D" parent="Obstaculos/Obstaculo1"]
+position = Vector2(120, -1.1)
+scale = Vector2(1.659, 1.659)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca6" type="Sprite2D" parent="Obstaculos/Obstaculo1"]
+position = Vector2(200, -1.5)
+scale = Vector2(1.666, 1.666)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
 
 [node name="Obstaculo2" type="StaticBody2D" parent="Obstaculos"]
 position = Vector2(-430, 150)
@@ -115,11 +162,42 @@ position = Vector2(-430, 150)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo2"]
 shape = SubResource("RectangleShape2D_obs2")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
-texture_repeat = 2
-texture = ExtResource("3_madera")
+[node name="Roca1" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(-152, 4.1)
+scale = Vector2(1.612, 1.612)
+flip_h = true
+texture = ExtResource("14_rocas")
 region_enabled = true
-region_rect = Rect2(0, 0, 460, 60)
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca2" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(-76, 1.8)
+scale = Vector2(1.731, 1.731)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca3" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(0, 3.2)
+scale = Vector2(1.698, 1.698)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca4" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(76, -3.4)
+scale = Vector2(1.53, 1.53)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca5" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(152, -4.5)
+scale = Vector2(1.524, 1.524)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
 
 [node name="Obstaculo3" type="StaticBody2D" parent="Obstaculos"]
 position = Vector2(520, -400)
@@ -127,11 +205,28 @@ position = Vector2(520, -400)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo3"]
 shape = SubResource("RectangleShape2D_obs3")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
-texture_repeat = 2
-texture = ExtResource("3_madera")
+[node name="Roca1" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+position = Vector2(-66.7, -0.5)
+scale = Vector2(1.501, 1.501)
+flip_h = true
+texture = ExtResource("14_rocas")
 region_enabled = true
-region_rect = Rect2(0, 0, 280, 60)
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca2" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+position = Vector2(0, -4.3)
+scale = Vector2(1.689, 1.689)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca3" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+position = Vector2(66.7, -0.1)
+scale = Vector2(1.742, 1.742)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
 
 [node name="ZonasHielo" type="Node2D" parent="."]
 
@@ -167,10 +262,34 @@ position = Vector2(450, -850)
 [node name="Campo" type="Sprite2D" parent="."]
 z_index = -10
 texture_repeat = 2
-scale = Vector2(1.5895605, 2.4847417)
-texture = ExtResource("5_pasto")
+position = Vector2(-1.0000296, 34.00004)
+scale = Vector2(1.6300449, 1.2243903)
+texture = ExtResource("13_fondo")
 region_enabled = true
-region_rect = Rect2(1710.8374, 818.74097, 868.5679, 1002.8828)
+region_rect = Rect2(-5.813843, -0.80841064, 892.61707, 2050.1807)
+
+[node name="Deco" type="Node2D" parent="."]
+z_index = -6
+
+[node name="Flores1" type="Sprite2D" parent="Deco"]
+position = Vector2(-545, -140)
+texture = ExtResource("15_flores")
+region_enabled = true
+region_rect = Rect2(63.4956, 1085.91, 337.452, 284.17)
+
+[node name="Pasto2" type="Sprite2D" parent="Deco"]
+position = Vector2(-545, -420)
+scale = Vector2(1.95436, 2.34579)
+texture = ExtResource("16_pasto")
+region_enabled = true
+region_rect = Rect2(44.4338, 153.266, 122.517, 143.311)
+
+[node name="Pasto3" type="Sprite2D" parent="Deco"]
+position = Vector2(300, -1130)
+scale = Vector2(1.95436, 2.34579)
+texture = ExtResource("16_pasto")
+region_enabled = true
+region_rect = Rect2(44.4338, 153.266, 122.517, 143.311)
 
 [node name="PantallaVictoria" parent="." instance=ExtResource("6_victoria")]
 visible = false

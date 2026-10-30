@@ -19,6 +19,15 @@ extends Area2D
 
 const LARGO_RAFAGA := 60.0
 
+## Brisa suave en bucle: se oye solo mientras la pelota está dentro de la zona
+const RUTA_SONIDO := "res://assets/viento.wav"
+const VOLUMEN_DB := -15.0
+const VOLUMEN_SILENCIO_DB := -60.0
+
+var _audio: AudioStreamPlayer
+var _pelotas_dentro: int = 0
+var _fundido: Tween
+
 var _rafagas: Array[Vector2] = []
 
 @onready var colision: CollisionShape2D = $CollisionShape2D
@@ -27,6 +36,54 @@ var _rafagas: Array[Vector2] = []
 func _ready() -> void:
 	colision.shape = RectangleShape2D.new()
 	_actualizar_forma()
+	if not Engine.is_editor_hint():
+		body_entered.connect(_on_body_entered)
+		body_exited.connect(_on_body_exited)
+		_crear_audio()
+
+
+func _crear_audio() -> void:
+	if not ResourceLoader.exists(RUTA_SONIDO):
+		return
+	var sonido = load(RUTA_SONIDO).duplicate()
+	if sonido is AudioStreamWAV:
+		var bytes := 2 if sonido.format == AudioStreamWAV.FORMAT_16_BITS else 1
+		if sonido.stereo:
+			bytes *= 2
+		sonido.loop_mode = AudioStreamWAV.LOOP_FORWARD
+		sonido.loop_begin = 0
+		sonido.loop_end = sonido.data.size() / bytes
+	_audio = AudioStreamPlayer.new()
+	_audio.stream = sonido
+	_audio.volume_db = VOLUMEN_SILENCIO_DB
+	add_child(_audio)
+
+
+func _on_body_entered(body: Node) -> void:
+	if not body.is_in_group("pelota") or _audio == null:
+		return
+	_pelotas_dentro += 1
+	if not Progreso.sonido_activo:
+		return
+	if _fundido:
+		_fundido.kill()
+	if not _audio.playing:
+		_audio.play(randf_range(0.0, 3.0))   # arranca en un punto distinto cada vez
+	_fundido = create_tween()
+	_fundido.tween_property(_audio, "volume_db", VOLUMEN_DB, 0.7)
+
+
+func _on_body_exited(body: Node) -> void:
+	if not body.is_in_group("pelota") or _audio == null:
+		return
+	_pelotas_dentro = maxi(_pelotas_dentro - 1, 0)
+	if _pelotas_dentro > 0:
+		return
+	if _fundido:
+		_fundido.kill()
+	_fundido = create_tween()
+	_fundido.tween_property(_audio, "volume_db", VOLUMEN_SILENCIO_DB, 0.9)
+	_fundido.tween_callback(_audio.stop)
 
 
 func _actualizar_forma() -> void:
@@ -69,4 +126,8 @@ func _physics_process(_delta: float) -> void:
 	var empuje := global_transform.x.normalized() * fuerza
 	for body in get_overlapping_bodies():
 		if body.is_in_group("pelota") and not body.en_hoyo:
-			body.apply_central_force(empuje)
+			# la pelota se entera de que hay viento: no se frena en seco y puede arrancar desde el reposo
+			if body.has_method("recibir_viento"):
+				body.recibir_viento(empuje)
+			else:
+				body.apply_central_force(empuje)

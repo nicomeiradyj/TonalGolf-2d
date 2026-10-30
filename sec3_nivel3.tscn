@@ -1,0 +1,155 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://dmkkgknnt4pfu" path="res://nivel_1.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://5lhwwyyqub60" path="res://pelota.tscn" id="2_pelota"]
+[ext_resource type="Texture2D" uid="uid://c78v8xalp14ll" path="res://assets/bordeMadera.jpg" id="3_madera"]
+[ext_resource type="PackedScene" uid="uid://deidyefrvlptn" path="res://hoyo.tscn" id="4_hoyo"]
+[ext_resource type="Texture2D" uid="uid://b5fkvwquaoxos" path="res://assets/grass2d.png" id="5_pasto"]
+[ext_resource type="PackedScene" uid="uid://cmp1lowbjy75e" path="res://pantalla_victoria.tscn" id="6_victoria"]
+[ext_resource type="PackedScene" path="res://hud.tscn" id="7_hud"]
+[ext_resource type="PackedScene" uid="uid://r5miulvtlvjq" path="res://barro.tscn" id="8_barro"]
+[ext_resource type="PackedScene" uid="uid://c1i2inicotfvi" path="res://viento.tscn" id="9_viento"]
+[ext_resource type="PackedScene" path="res://hielo.tscn" id="10_hielo"]
+[ext_resource type="PackedScene" path="res://cartel_zona.tscn" id="11_cartel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arriba"]
+size = Vector2(1440, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abajo"]
+size = Vector2(1440, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_izq"]
+size = Vector2(60, 2560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_der"]
+size = Vector2(60, 2560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs1"]
+size = Vector2(500, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obs2"]
+size = Vector2(500, 60)
+
+[node name="S3Nivel3" type="Node2D"]
+script = ExtResource("1_script")
+numero_nivel = 11
+nombre_nivel = "3-3"
+par = 4
+siguiente_nivel = "res://sec3_nivel4.tscn"
+tiempo_hardcore = 55
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Pelota" parent="." instance=ExtResource("2_pelota")]
+position = Vector2(400, 1065)
+
+[node name="Bordes" type="StaticBody2D" parent="."]
+
+[node name="ParedArriba" type="CollisionShape2D" parent="Bordes"]
+position = Vector2(0, -1250)
+shape = SubResource("RectangleShape2D_arriba")
+
+[node name="ParedAbajo" type="CollisionShape2D" parent="Bordes"]
+position = Vector2(0, 1245)
+shape = SubResource("RectangleShape2D_abajo")
+
+[node name="ParedIzquierda" type="CollisionShape2D" parent="Bordes"]
+position = Vector2(-690, 0)
+shape = SubResource("RectangleShape2D_izq")
+
+[node name="ParedDerecha" type="CollisionShape2D" parent="Bordes"]
+position = Vector2(690, 0)
+shape = SubResource("RectangleShape2D_der")
+
+[node name="MaderaIzquierda" type="Sprite2D" parent="Bordes"]
+texture_repeat = 2
+position = Vector2(-690, 0)
+texture = ExtResource("3_madera")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 2560)
+
+[node name="MaderaArriba" type="Sprite2D" parent="Bordes"]
+texture_repeat = 2
+position = Vector2(0, -1250)
+rotation = 1.5707964
+texture = ExtResource("3_madera")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1440)
+
+[node name="MaderaAbajo" type="Sprite2D" parent="Bordes"]
+texture_repeat = 2
+position = Vector2(0, 1250)
+rotation = 1.5707964
+texture = ExtResource("3_madera")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 1440)
+
+[node name="MaderaDerecha" type="Sprite2D" parent="Bordes"]
+texture_repeat = 2
+position = Vector2(690, 0)
+texture = ExtResource("3_madera")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 2560)
+
+[node name="Obstaculos" type="Node2D" parent="."]
+
+[node name="Obstaculo1" type="StaticBody2D" parent="Obstaculos"]
+position = Vector2(-380, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo1"]
+shape = SubResource("RectangleShape2D_obs1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo1"]
+texture_repeat = 2
+texture = ExtResource("3_madera")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 60)
+
+[node name="Obstaculo2" type="StaticBody2D" parent="Obstaculos"]
+position = Vector2(380, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo2"]
+shape = SubResource("RectangleShape2D_obs2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+texture_repeat = 2
+texture = ExtResource("3_madera")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 60)
+
+[node name="ZonasHielo" type="Node2D" parent="."]
+
+[node name="Hielo1" parent="ZonasHielo" instance=ExtResource("10_hielo")]
+position = Vector2(-250, -100)
+tamano = Vector2(440, 360)
+
+[node name="Hielo2" parent="ZonasHielo" instance=ExtResource("10_hielo")]
+position = Vector2(250, 850)
+tamano = Vector2(420, 260)
+
+[node name="Barro" type="Node" parent="."]
+
+[node name="Charco1" parent="Barro" instance=ExtResource("8_barro")]
+position = Vector2(-450, 850)
+
+[node name="Viento1" parent="." instance=ExtResource("9_viento")]
+position = Vector2(0, 300)
+tamano = Vector2(1320, 300)
+fuerza = 260
+
+[node name="Hoyo" parent="." instance=ExtResource("4_hoyo")]
+position = Vector2(-250, -100)
+
+[node name="Campo" type="Sprite2D" parent="."]
+z_index = -10
+texture_repeat = 2
+scale = Vector2(1.5895605, 2.4847417)
+texture = ExtResource("5_pasto")
+region_enabled = true
+region_rect = Rect2(1710.8374, 818.74097, 868.5679, 1002.8828)
+
+[node name="PantallaVictoria" parent="." instance=ExtResource("6_victoria")]
+visible = false
+
+[node name="HUD" parent="." instance=ExtResource("7_hud")]

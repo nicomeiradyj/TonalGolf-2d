@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://r5miulvtlvjq"]
 
 [ext_resource type="Texture2D" uid="uid://djbgdldjg2jsv" path="res://assets/barro_tonalgolf-2d.png" id="1_urao6"]
+[ext_resource type="Script" path="res://barro.gd" id="2_barro"]
 
 [node name="Charco1" type="Area2D" unique_id=554240050]
 linear_damp_space_override = 1
 linear_damp = 3.0
+script = ExtResource("2_barro")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1044205230]
 scale = Vector2(0.473, 0.6)

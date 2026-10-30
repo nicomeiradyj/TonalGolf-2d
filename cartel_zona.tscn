@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://cartel_zona.gd" id="1_cartel"]
+
+[node name="Ayuda" type="CanvasLayer"]
+layer = 4
+script = ExtResource("1_cartel")

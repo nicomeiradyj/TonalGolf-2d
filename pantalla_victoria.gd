@@ -15,7 +15,8 @@ func _ready() -> void:
 	btn_reintentar.pressed.connect(_on_reintentar)
 	btn_menu.pressed.connect(_on_menu)
 
-func mostrar(golpes: int, nivel_siguiente: String, par: int = 0, nuevo_record: bool = false) -> void:
+func mostrar(golpes: int, nivel_siguiente: String, par: int = 0, nuevo_record: bool = false,
+		hardcore: bool = false, tiempo_sobrante: float = 0.0) -> void:
 	siguiente_nivel = nivel_siguiente
 
 	if golpes == 1:
@@ -31,7 +32,18 @@ func mostrar(golpes: int, nivel_siguiente: String, par: int = 0, nuevo_record: b
 
 	label_record.visible = nuevo_record
 	btn_siguiente.visible = ResourceLoader.exists(siguiente_nivel)
+
+	# el ultimo nivel no sigue a otro nivel sino a la pantalla final con las estadisticas
+	if nivel_siguiente.ends_with("pantalla_final.tscn"):
+		btn_siguiente.text = "VER RESULTADOS"
+
+	if hardcore:
+		# en hardcore no se puede reintentar: cada nivel se juega una sola vez
+		btn_reintentar.visible = false
+		label_record.visible = true
+		label_record.text = "TIEMPO SOBRANTE: %d s" % int(ceil(maxf(tiempo_sobrante, 0.0)))
 	visible = true
+	Sonidos.jingle("victoria")
 
 # Terminología de golf según la diferencia contra el par
 func _nombre_resultado(golpes: int, par: int) -> String:

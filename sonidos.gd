@@ -8,6 +8,14 @@ const RUTAS := {
 	"rebote": "res://assets/rebote.wav",
 	"hoyo": "res://assets/hoyo.wav",
 	"click": "res://assets/menu_click.mp3",
+	"casi": "res://assets/casi.wav",
+	"hielo": "res://assets/hielo.wav",
+	"barro": "res://assets/barro.wav",
+	"barro_roce": "res://assets/barro_roce.wav",
+	"tictac": "res://assets/tictac.wav",
+	"derrota": "res://assets/derrota.wav",
+	"victoria": "res://assets/victoria.wav",
+	"victoria_final": "res://assets/victoria_final.wav",
 }
 
 ## Música de fondo (OGG en loop). Para cambiarla, reemplazá este archivo
@@ -52,6 +60,21 @@ func actualizar_musica() -> void:
 			_musica.play()
 	else:
 		_musica.stop()
+
+
+## Jingle de victoria: pausa la música de fondo mientras suena y la reanuda después
+func jingle(nombre: String, volumen_db: float = -4.0) -> void:
+	if not Progreso.sonido_activo or not _streams.has(nombre):
+		return
+	reproducir(nombre, volumen_db)
+	if _musica == null:
+		return
+	# la musica de fondo se pausa mientras suena el jingle y sigue donde estaba al terminar
+	_musica.stream_paused = true
+	var duracion: float = _streams[nombre].get_length()
+	var t := create_tween()
+	t.tween_interval(duracion + 0.2)
+	t.tween_callback(func() -> void: _musica.stream_paused = false)
 
 
 func reproducir(nombre: String, volumen_db: float = 0.0, pitch: float = 1.0) -> void:

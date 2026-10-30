@@ -1,0 +1,87 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ayuda.gd" id="1_ayuda"]
+[ext_resource type="FontFile" uid="uid://b6kdap2sdhueq" path="res://assets/w3-ip.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ayuda"]
+content_margin_left = 28.0
+content_margin_top = 24.0
+content_margin_right = 28.0
+content_margin_bottom = 24.0
+bg_color = Color(0.019607844, 0.039215688, 0.023529412, 0.88)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3372549, 0.8, 0.5411765, 1)
+
+[node name="Ayuda" type="CanvasLayer"]
+layer = 4
+script = ExtResource("1_ayuda")
+
+[node name="Raiz" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Gesto" type="Control" parent="Raiz"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Raiz"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -290.0
+offset_top = 430.0
+offset_right = 290.0
+offset_bottom = 640.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ayuda")
+
+[node name="VBox" type="VBoxContainer" parent="Raiz/Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Titulo" type="Label" parent="Raiz/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 34
+text = "COMO SE JUEGA"
+horizontal_alignment = 1
+
+[node name="Linea1" type="Label" parent="Raiz/Panel/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "ARRASTRA PARA ATRAS Y SOLTA"
+horizontal_alignment = 1
+
+[node name="Linea2" type="Label" parent="Raiz/Panel/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "LA PELOTA SALE PARA ADELANTE"
+horizontal_alignment = 1
+
+[node name="Linea3" type="Label" parent="Raiz/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3372549, 0.8, 0.5411765, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "METELA EN EL HOYO CON POCOS GOLPES"
+horizontal_alignment = 1

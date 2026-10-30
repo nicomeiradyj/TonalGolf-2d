@@ -31,6 +31,7 @@ script = ExtResource("1_2lask")
 numero_nivel = 2
 par = 3
 siguiente_nivel = "res://nivel_3.tscn"
+tiempo_hardcore = 28
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
 zoom = Vector2(0.5, 0.5)
@@ -119,7 +120,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 800, 60)
 
 [node name="Hoyo" parent="." unique_id=597095437 instance=ExtResource("3_m2gv8")]
-position = Vector2(-400, -950)
+position = Vector2(-400, -650)
 
 [node name="Campo" type="Sprite2D" parent="." unique_id=1451714435]
 z_index = -10

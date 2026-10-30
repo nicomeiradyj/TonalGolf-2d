@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" path="res://hud.tscn" id="7_ofpb4"]
 [ext_resource type="Texture2D" uid="uid://bdglsoe2bmq8t" path="res://assets/Tiled.png" id="8_qsikp"]
 [ext_resource type="PackedScene" uid="uid://r5miulvtlvjq" path="res://barro.tscn" id="9_1ffvf"]
+[ext_resource type="PackedScene" path="res://cartel_zona.tscn" id="99_cartel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
 size = Vector2(1440, 60)
@@ -27,7 +28,8 @@ script = ExtResource("1_1ffvf")
 numero_nivel = 5
 nombre_nivel = "2-1"
 par = 3
-siguiente_nivel = ""
+siguiente_nivel = "res://sec2_nivel2.tscn"
+tiempo_hardcore = 28
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
 zoom = Vector2(0.5, 0.5)
@@ -100,7 +102,6 @@ region_rect = Rect2(1710.8374, 818.74097, 868.5679, 1002.8828)
 visible = false
 
 [node name="HUD" parent="." unique_id=1868276487 instance=ExtResource("7_ofpb4")]
-visible = false
 
 [node name="Arboles" type="Node2D" parent="." unique_id=1945923729]
 
@@ -140,3 +141,6 @@ position = Vector2(462, -885)
 
 [node name="Charco4" parent="Barro" unique_id=1791040673 instance=ExtResource("9_1ffvf")]
 position = Vector2(453, 571)
+
+[node name="Ayuda" parent="." instance=ExtResource("99_cartel")]
+tipo = "barro"

@@ -44,6 +44,7 @@ func _on_pressed() -> void:
 		# Se destruye solo cuando termina de sonar para no ocupar memoria
 		audio.finished.connect(audio.queue_free)
 
-	# Cambia a la escena del nivel elegido
+	# Cambia a la escena del nivel elegido (siempre en modo normal)
+	Progreso.modo_hardcore = false
 	if nivel_a_cargar != "":
 		get_tree().change_scene_to_file(nivel_a_cargar)

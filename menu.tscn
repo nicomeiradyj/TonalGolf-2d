@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b450mft6shidd" path="res://menu_secciones.gd" id="2_ytr4m"]
 [ext_resource type="AudioStream" uid="uid://bnpquolboiwul" path="res://assets/menu_click.mp3" id="3_4hy44"]
 [ext_resource type="Script" uid="uid://c8rykq0uygve4" path="res://scripts/boton_sonido.gd" id="4_snd"]
+[ext_resource type="Script" path="res://scripts/boton_hardcore.gd" id="5_hardcore"]
 
 [node name="MenuPrincipal" type="Control" unique_id=1356918629]
 layout_mode = 3
@@ -178,12 +179,114 @@ nivel_a_cargar = "uid://mttqnkhfeap"
 numero_nivel = 5
 sonido_click = ExtResource("3_4hy44")
 
+[node name="BtnNivel6" type="Button" parent="PanelSeleccion/Scroll/Secciones/NivelesSec2"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 48
+text = "02"
+script = ExtResource("2_mae5d")
+nivel_a_cargar = "res://sec2_nivel2.tscn"
+numero_nivel = 6
+sonido_click = ExtResource("3_4hy44")
+
+[node name="BtnNivel7" type="Button" parent="PanelSeleccion/Scroll/Secciones/NivelesSec2"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 48
+text = "03"
+script = ExtResource("2_mae5d")
+nivel_a_cargar = "res://sec2_nivel3.tscn"
+numero_nivel = 7
+sonido_click = ExtResource("3_4hy44")
+
+[node name="BtnNivel8" type="Button" parent="PanelSeleccion/Scroll/Secciones/NivelesSec2"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 48
+text = "04"
+script = ExtResource("2_mae5d")
+nivel_a_cargar = "res://sec2_nivel4.tscn"
+numero_nivel = 8
+sonido_click = ExtResource("3_4hy44")
+
+[node name="BtnSeccion3" type="Button" parent="PanelSeleccion/Scroll/Secciones"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 40
+text = "SECCION 3"
+
+[node name="NivelesSec3" type="VBoxContainer" parent="PanelSeleccion/Scroll/Secciones"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BtnNivel9" type="Button" parent="PanelSeleccion/Scroll/Secciones/NivelesSec3"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 48
+text = "01"
+script = ExtResource("2_mae5d")
+nivel_a_cargar = "res://sec3_nivel1.tscn"
+numero_nivel = 9
+sonido_click = ExtResource("3_4hy44")
+
+[node name="BtnNivel10" type="Button" parent="PanelSeleccion/Scroll/Secciones/NivelesSec3"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 48
+text = "02"
+script = ExtResource("2_mae5d")
+nivel_a_cargar = "res://sec3_nivel2.tscn"
+numero_nivel = 10
+sonido_click = ExtResource("3_4hy44")
+
+[node name="BtnNivel11" type="Button" parent="PanelSeleccion/Scroll/Secciones/NivelesSec3"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 48
+text = "03"
+script = ExtResource("2_mae5d")
+nivel_a_cargar = "res://sec3_nivel3.tscn"
+numero_nivel = 11
+sonido_click = ExtResource("3_4hy44")
+
+[node name="BtnNivel12" type="Button" parent="PanelSeleccion/Scroll/Secciones/NivelesSec3"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 48
+text = "04"
+script = ExtResource("2_mae5d")
+nivel_a_cargar = "res://sec3_nivel4.tscn"
+numero_nivel = 12
+sonido_click = ExtResource("3_4hy44")
+
+[node name="BtnHardcore" type="Button" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 1040.0
+offset_right = 640.0
+offset_bottom = 1130.0
+theme_override_colors/font_color = Color(1, 0.4, 0.35, 1)
+theme_override_colors/font_hover_color = Color(1, 0.6, 0.55, 1)
+theme_override_fonts/font = ExtResource("1_lti8b")
+theme_override_font_sizes/font_size = 40
+text = "HARDCORE"
+script = ExtResource("5_hardcore")
+sonido_click = ExtResource("3_4hy44")
+
 [node name="BtnSonido" type="Button" parent="." unique_id=1021271017]
 layout_mode = 0
 offset_left = 80.0
-offset_top = 1080.0
+offset_top = 1150.0
 offset_right = 640.0
-offset_bottom = 1170.0
+offset_bottom = 1230.0
 theme_override_fonts/font = ExtResource("1_lti8b")
 theme_override_font_sizes/font_size = 32
 text = "SONIDO: SI"

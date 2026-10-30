@@ -5,6 +5,8 @@ var listas: Array[Control] = []
 
 
 func _ready() -> void:
+	# llegar al menu siempre termina cualquier partida hardcore
+	Progreso.modo_hardcore = false
 	var hijos := get_children()
 	for i in range(0, hijos.size() - 1, 2):
 		var titulo := hijos[i] as Button

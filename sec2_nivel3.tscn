@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" path="res://hud.tscn" id="7_w0jyt"]
 [ext_resource type="Texture2D" uid="uid://bdglsoe2bmq8t" path="res://assets/Tiled.png" id="8_ermqi"]
 [ext_resource type="PackedScene" uid="uid://c1i2inicotfvi" path="res://viento.tscn" id="9_sb67v"]
+[ext_resource type="PackedScene" path="res://cartel_zona.tscn" id="99_cartel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
 size = Vector2(1440, 60)
@@ -27,7 +28,8 @@ script = ExtResource("1_sb67v")
 numero_nivel = 7
 nombre_nivel = "2-3"
 par = 3
-siguiente_nivel = ""
+siguiente_nivel = "res://sec2_nivel4.tscn"
+tiempo_hardcore = 32
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
 zoom = Vector2(0.5, 0.5)
@@ -100,7 +102,6 @@ region_rect = Rect2(1710.8374, 818.74097, 868.5679, 1002.8828)
 visible = false
 
 [node name="HUD" parent="." unique_id=1868276487 instance=ExtResource("7_w0jyt")]
-visible = false
 
 [node name="Arboles" type="Node2D" parent="." unique_id=1945923729]
 
@@ -132,3 +133,6 @@ region_rect = Rect2(269.28925, 369.0027, 35.643738, 67.95264)
 
 [node name="Viento" parent="." unique_id=1677115453 instance=ExtResource("9_sb67v")]
 tamano = Vector2(1300, 500)
+
+[node name="Ayuda" parent="." instance=ExtResource("99_cartel")]
+tipo = "viento"

@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://co5j0ey34bj8n"]
 
 [ext_resource type="Script" uid="uid://dmkkgknnt4pfu" path="res://nivel_1.gd" id="1_2lask"]
 [ext_resource type="PackedScene" uid="uid://5lhwwyyqub60" path="res://pelota.tscn" id="1_xi31o"]
@@ -21,10 +21,10 @@ size = Vector2(60, 2560)
 size = Vector2(60, 2560)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obs1"]
-size = Vector2(800, 60)
+size = Vector2(574, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obs2"]
-size = Vector2(800, 60)
+size = Vector2(674, 60)
 
 [node name="Nivel2" type="Node2D" unique_id=1215263058]
 script = ExtResource("1_2lask")
@@ -86,28 +86,34 @@ texture = ExtResource("3_320mp")
 region_enabled = true
 region_rect = Rect2(0, 0, 60, 2560)
 
-[node name="Obstaculos" type="Node2D" parent="."]
+[node name="Obstaculos" type="Node2D" parent="." unique_id=722104771]
 
-[node name="Obstaculo1" type="StaticBody2D" parent="Obstaculos"]
+[node name="Obstaculo1" type="StaticBody2D" parent="Obstaculos" unique_id=213098338]
 position = Vector2(-260, 300)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo1" unique_id=1921705860]
+position = Vector2(-113, 0)
 shape = SubResource("RectangleShape2D_obs1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo1"]
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo1" unique_id=41596889]
 texture_repeat = 2
+position = Vector2(-111.5, 0)
+scale = Vector2(0.72125, 1)
 texture = ExtResource("3_320mp")
 region_enabled = true
 region_rect = Rect2(0, 0, 800, 60)
 
-[node name="Obstaculo2" type="StaticBody2D" parent="Obstaculos"]
+[node name="Obstaculo2" type="StaticBody2D" parent="Obstaculos" unique_id=894049043]
 position = Vector2(260, -300)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo2" unique_id=599182411]
+position = Vector2(63, 0)
 shape = SubResource("RectangleShape2D_obs2")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo2" unique_id=820595596]
 texture_repeat = 2
+position = Vector2(63.5, 0)
+scale = Vector2(0.84125, 1)
 texture = ExtResource("3_320mp")
 region_enabled = true
 region_rect = Rect2(0, 0, 800, 60)
@@ -123,11 +129,5 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1440, 2560)
 
 [node name="PantallaVictoria" parent="." unique_id=1393267158 instance=ExtResource("6_kd3qp")]
-visible = false
 
-<<<<<<< Updated upstream
-[node name="HUD" parent="." instance=ExtResource("7_hud")]
-=======
 [node name="HUD" parent="." unique_id=1718368698 instance=ExtResource("7_hud")]
-visible = false
->>>>>>> Stashed changes

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cphu2i6ipwr8k"]
+[gd_scene format=3 uid="uid://bcgb6s65jrg65"]
 
 [ext_resource type="Script" uid="uid://dmkkgknnt4pfu" path="res://nivel_1.gd" id="1_sb67v"]
 [ext_resource type="PackedScene" uid="uid://5lhwwyyqub60" path="res://pelota.tscn" id="2_om7c0"]
@@ -33,7 +33,7 @@ script = ExtResource("1_sb67v")
 numero_nivel = 6
 nombre_nivel = "2-1"
 par = 3
-siguiente_nivel = "uid://b4l806onyy1e7"
+siguiente_nivel = "uid://cmp1lowbjy75e"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
 zoom = Vector2(0.5, 0.5)

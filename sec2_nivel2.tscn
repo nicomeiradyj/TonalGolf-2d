@@ -28,10 +28,10 @@ size = Vector2(60, 2560)
 
 [node name="S2Nivel2" type="Node2D" unique_id=1215263058]
 script = ExtResource("1_81htj")
-numero_nivel = 6
+numero_nivel = 7
 nombre_nivel = "2-1"
 par = 3
-siguiente_nivel = "uid://b4l806onyy1e7"
+siguiente_nivel = "uid://bcgb6s65jrg65"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=30333043]
 zoom = Vector2(0.5, 0.5)

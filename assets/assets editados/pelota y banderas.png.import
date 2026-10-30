@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://84du1xcn78fv"
-valid=false
+path="res://.godot/imported/pelota y banderas.png-c45698d2d1f2ba0d424b0e48bce2f3b7.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/assets editados/pelota y banderas.png"
+dest_files=["res://.godot/imported/pelota y banderas.png-c45698d2d1f2ba0d424b0e48bce2f3b7.ctex"]
 
 [params]
 

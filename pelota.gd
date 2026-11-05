@@ -46,8 +46,6 @@ var zonas_hielo: int = 0
 @export var damp_hielo: float = 0.12
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var linea: Line2D = $LineaApuntado
-@onready var punta_flecha: Sprite2D = $LineaApuntado/PuntaFlecha
 
 const COLOR_BARRO := Color(0.40, 0.25, 0.11)
 const CANTIDAD_MANCHAS := 9
@@ -62,23 +60,33 @@ const ARRASTRE_MINIMO := 10.0
 var _damp_normal: float = 0.0
 var _manchas: Node2D
 var _datos_manchas: Array[Vector3] = []   # x, y, radio (en coordenadas del sprite)
-var _punta: Polygon2D
+
+## Flecha de tiro: se dibuja toda por código por simplicidad y no encontramos buenos graficos
+const RADIO_PELOTA := 70.0          # los puntos arrancan desde el borde de la pelota
+const SEPARACION_PUNTOS := 30.0
+const TAMANO_TEXTO := 44
+const COLOR_BORDE := Color(0.05, 0.08, 0.05, 0.85)
+const RUTA_FUENTE := "res://assets/w3-ip.ttf"
+
+var _flecha: Node2D
+var _fuente: Font
 
 func _ready() -> void:
 	add_to_group("pelota")
 	_damp_normal = linear_damp
-	linea.clear_points()
-	# la punta vieja (imagen roja) no se puede pintar de otro color: se usa un triángulo
-	punta_flecha.visible = false
-	_crear_punta()
+	_crear_flecha()
 	body_entered.connect(_on_body_entered)
 	_crear_manchas()
 
-func _crear_punta() -> void:
-	_punta = Polygon2D.new()
-	_punta.polygon = PackedVector2Array([Vector2(0, -22), Vector2(38, 0), Vector2(0, 22)])
-	_punta.visible = false
-	linea.add_child(_punta)
+func _crear_flecha() -> void:
+	_flecha = Node2D.new()
+	_flecha.z_index = 5   # por encima de la pelota y de los obstáculos
+	add_child(_flecha)
+	_flecha.draw.connect(_dibujar_flecha)
+	if ResourceLoader.exists(RUTA_FUENTE):
+		_fuente = load(RUTA_FUENTE)
+	else:
+		_fuente = ThemeDB.fallback_font
 
 func _unhandled_input(event: InputEvent) -> void:
 	if en_hoyo or bloqueada:
@@ -102,8 +110,7 @@ func _input(event: InputEvent) -> void:
 
 func _cancelar_apuntado() -> void:
 	dragging = false
-	linea.clear_points()
-	_punta.visible = false
+	_flecha.queue_redraw()   # con dragging en false, la flecha se borra
 
 func _soltar() -> void:
 	var potencia := _potencia()
@@ -123,27 +130,48 @@ func _soltar() -> void:
 	Sonidos.reproducir("golpe", linear_to_db(0.4 + 0.6 * potencia))
 
 func _process(_delta: float) -> void:
-	if not dragging:
-		return
-	if _arrastre_en_pantalla() < ARRASTRE_MINIMO:
-		linea.clear_points()
-		_punta.visible = false
+	if dragging:
+		_flecha.queue_redraw()
+
+func _dibujar_flecha() -> void:
+	if not dragging or _arrastre_en_pantalla() < ARRASTRE_MINIMO:
 		return
 
 	var potencia := _potencia()
 	# la flecha muestra la fuerza real: dentro del barro es más corta
-	var aim_vector := _direccion() * largo_flecha * potencia * _factor_tiro()
+	var fuerza_real := potencia * _factor_tiro()
+	var direccion := _direccion()
 	var color := _color_potencia(potencia)
+	var largo := RADIO_PELOTA + largo_flecha * fuerza_real
+	var punta_pos := direccion * largo
 
-	linea.clear_points()
-	linea.add_point(Vector2.ZERO)
-	linea.add_point(aim_vector)
-	linea.default_color = color
+	# puntos: arrancan en el borde de la pelota y crecen hacia la punta
+	var cantidad := int((largo - RADIO_PELOTA) / SEPARACION_PUNTOS)
+	for i in cantidad:
+		var t := float(i) / float(maxi(cantidad - 1, 1))
+		var centro := direccion * (RADIO_PELOTA + i * SEPARACION_PUNTOS)
+		var radio := lerpf(6.0, 12.0, t)
+		_flecha.draw_circle(centro, radio + 3.0, COLOR_BORDE)
+		_flecha.draw_circle(centro, radio, color)
 
-	_punta.visible = true
-	_punta.position = aim_vector
-	_punta.rotation = aim_vector.angle()
-	_punta.color = color
+	# punta: primero un triángulo oscuro más grande (el borde) y encima el de color
+	var lado := direccion.orthogonal()
+	_flecha.draw_colored_polygon(_triangulo(punta_pos, direccion, lado, 6.0), COLOR_BORDE)
+	_flecha.draw_colored_polygon(_triangulo(punta_pos, direccion, lado, 0.0), color)
+
+	# porcentaje de potencia, delante de la punta
+	var texto := "%d%%" % roundi(fuerza_real * 100.0)
+	var ancho := 200.0
+	var base := punta_pos + direccion * 90.0 + Vector2(-ancho / 2.0, TAMANO_TEXTO * 0.35)
+	_flecha.draw_string_outline(_fuente, base, texto, HORIZONTAL_ALIGNMENT_CENTER, ancho, TAMANO_TEXTO, 10, COLOR_BORDE)
+	_flecha.draw_string(_fuente, base, texto, HORIZONTAL_ALIGNMENT_CENTER, ancho, TAMANO_TEXTO, color)
+
+func _triangulo(base: Vector2, direccion: Vector2, lado: Vector2, borde: float) -> PackedVector2Array:
+	return PackedVector2Array([
+		base + direccion * (44.0 + borde * 1.6),
+		base + lado * (26.0 + borde) - direccion * borde,
+		base - lado * (26.0 + borde) - direccion * borde,
+	])
 
 
 ## Cuánto se arrastro el tiro

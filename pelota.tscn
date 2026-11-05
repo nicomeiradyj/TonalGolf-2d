@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://5lhwwyyqub60"]
 
 [ext_resource type="Script" uid="uid://8d5fiul6oy4p" path="res://pelota.gd" id="1_0okw3"]
-[ext_resource type="Texture2D" uid="uid://bes7b2w33ypsq" path="res://assets/punta_flecha.png" id="2_0okw3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2lask"]
 friction = 0.0
@@ -33,14 +32,3 @@ texture = SubResource("CompressedTexture2D_sha3n")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1237414853]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_8w0r3")
-
-[node name="LineaApuntado" type="Line2D" parent="." unique_id=1128593975]
-z_index = 5
-width = 7.0
-default_color = Color(1, 0, 0, 1)
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="PuntaFlecha" type="Sprite2D" parent="LineaApuntado" unique_id=148068975]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_0okw3")

@@ -7,7 +7,6 @@ var dragging: bool = false
 var en_hoyo: bool = false
 var golpes: int = 0
 
-## Bloquea los tiros (ej: se acabó el tiempo en modo hardcore)
 var bloqueada: bool = false
 
 ## Tiempo que queda de "estoy en una zona de viento" (lo renueva el viento en cada frame)
@@ -15,29 +14,35 @@ var _viento_restante: float = 0.0
 var en_viento: bool:
 	get: return _viento_restante > 0.0
 
-## Cantidad de charcos de barro que está pisando la pelota en este momento
 var zonas_barro: int = 0
 
-## Cuánta suciedad tiene la pelota: 0 = limpia, 1 = toda embarrada
 var suciedad: float = 0.0
 
-## Cantidad de zonas de hielo que está pisando la pelota en este momento
 var zonas_hielo: int = 0
 
-@export var power_multiplier: float = 3.0
-@export var max_aim_length: float = 150.0
+## Fuerza del tiro más fuerte posible 
+@export var fuerza_maxima: float = 2500.0
+
+## Cuántos píxeles de pantalla hay que arrastrar para llegar a la fuerza máxima
+@export var arrastre_maximo: float = 300.0
+
+## Curva de la fuerza: 1 = pareja; más alto = más precisión en los tiros cortos
+@export var curva_potencia: float = 1.5
+
+## Largo de la flecha (en píxeles del nivel) con la fuerza máxima
+@export var largo_flecha: float = 400.0
+
 @export var velocidad_minima_tiro: float = 10.0
 
-## Fuerza del tiro (0 a 1) cuando la pelota está parada dentro del barro
+## Por debajo de esta velocidad ya se puede apuntar y tirar 
+@export var velocidad_para_tirar: float = 60.0
+
 @export var factor_barro: float = 0.55
 
-## Cuánta suciedad se va con cada golpe (0.34 = se limpia del todo en 3 tiros)
 @export var limpieza_por_golpe: float = 0.34
 
-## Velocidad con la que se ensucia en el barro (por segundo)
 @export var velocidad_ensuciar: float = 2.5
 
-## Rozamiento mientras la pelota está sobre hielo (el normal es el linear_damp)
 @export var damp_hielo: float = 0.12
 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -47,20 +52,34 @@ var zonas_hielo: int = 0
 const COLOR_BARRO := Color(0.40, 0.25, 0.11)
 const CANTIDAD_MANCHAS := 9
 
+const COLOR_SUAVE := Color(0.30, 0.85, 0.35)
+const COLOR_MEDIO := Color(1.00, 0.85, 0.20)
+const COLOR_FUERTE := Color(0.95, 0.20, 0.15)
+
+## Arrastres más cortos que esto no tiran
+const ARRASTRE_MINIMO := 10.0
+
 var _damp_normal: float = 0.0
 var _manchas: Node2D
 var _datos_manchas: Array[Vector3] = []   # x, y, radio (en coordenadas del sprite)
+var _punta: Polygon2D
 
 func _ready() -> void:
 	add_to_group("pelota")
 	_damp_normal = linear_damp
 	linea.clear_points()
+	# la punta vieja (imagen roja) no se puede pintar de otro color: se usa un triángulo
 	punta_flecha.visible = false
+	_crear_punta()
 	body_entered.connect(_on_body_entered)
 	_crear_manchas()
 
-# El clic/toque que NO fue consumido por un botón de la interfaz (ej: el botón de
-# pausa) empieza el apuntado. Así tocar "pausa" no dispara un tiro.
+func _crear_punta() -> void:
+	_punta = Polygon2D.new()
+	_punta.polygon = PackedVector2Array([Vector2(0, -22), Vector2(38, 0), Vector2(0, 22)])
+	_punta.visible = false
+	linea.add_child(_punta)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if en_hoyo or bloqueada:
 		return
@@ -68,11 +87,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Solo se puede tirar con la pelota quieta, o moviéndose sobre hielo o dentro del viento
 		if not puede_apuntar():
 			return
+		_frenar_para_tirar()
 		drag_start = get_global_mouse_position()
 		dragging = true
-		punta_flecha.visible = true
 
-# Soltar siempre se escucha, aunque el dedo termine encima de un botón
 func _input(event: InputEvent) -> void:
 	if not dragging:
 		return
@@ -85,39 +103,70 @@ func _input(event: InputEvent) -> void:
 func _cancelar_apuntado() -> void:
 	dragging = false
 	linea.clear_points()
-	punta_flecha.visible = false
+	_punta.visible = false
 
 func _soltar() -> void:
-	dragging = false
-	var drag_end: Vector2 = get_global_mouse_position()
-	var impulse_vector: Vector2 = (drag_start - drag_end).limit_length(max_aim_length)
+	var potencia := _potencia()
+	var direccion := _direccion()
+	var arrastre := _arrastre_en_pantalla()
+	_cancelar_apuntado()
 
-	linea.clear_points()
-	punta_flecha.visible = false
-
-	if impulse_vector.length() < 10.0:
+	if arrastre < ARRASTRE_MINIMO:
 		return
 
-	apply_central_impulse(impulse_vector * power_multiplier * _factor_tiro())
+	_frenar_para_tirar()
+	apply_central_impulse(direccion * fuerza_maxima * potencia * _factor_tiro())
 	_limpiar_un_poco()
 	golpes += 1
 	golpe_dado.emit(golpes)
 
-	var fuerza := impulse_vector.length() / max_aim_length
-	Sonidos.reproducir("golpe", linear_to_db(0.4 + 0.6 * fuerza))
+	Sonidos.reproducir("golpe", linear_to_db(0.4 + 0.6 * potencia))
 
 func _process(_delta: float) -> void:
-	if dragging:
-		var drag_end: Vector2 = get_global_mouse_position()
-		# la flecha muestra la fuerza real: dentro del barro es más corta
-		var aim_vector: Vector2 = (drag_start - drag_end).limit_length(max_aim_length) * _factor_tiro()
-
+	if not dragging:
+		return
+	if _arrastre_en_pantalla() < ARRASTRE_MINIMO:
 		linea.clear_points()
-		linea.add_point(Vector2.ZERO)
-		linea.add_point(aim_vector)
+		_punta.visible = false
+		return
 
-		punta_flecha.position = aim_vector
-		punta_flecha.rotation = aim_vector.angle()
+	var potencia := _potencia()
+	# la flecha muestra la fuerza real: dentro del barro es más corta
+	var aim_vector := _direccion() * largo_flecha * potencia * _factor_tiro()
+	var color := _color_potencia(potencia)
+
+	linea.clear_points()
+	linea.add_point(Vector2.ZERO)
+	linea.add_point(aim_vector)
+	linea.default_color = color
+
+	_punta.visible = true
+	_punta.position = aim_vector
+	_punta.rotation = aim_vector.angle()
+	_punta.color = color
+
+
+## Cuánto se arrastro el tiro
+func _arrastre_en_pantalla() -> float:
+	return (drag_start - get_global_mouse_position()).length() * _zoom_camara()
+
+func _zoom_camara() -> float:
+	var camara := get_viewport().get_camera_2d()
+	return camara.zoom.x if camara else 1.0
+
+func _direccion() -> Vector2:
+	return (drag_start - get_global_mouse_position()).normalized()
+
+## Fuerza de 0 a 1. Con la curva, la mitad del arrastre da ~35 % de fuerza (más precisión en tiros cortos)
+func _potencia() -> float:
+	var t := clampf(_arrastre_en_pantalla() / arrastre_maximo, 0.0, 1.0)
+	return pow(t, curva_potencia)
+
+## Verde (suave) -> amarillo -> rojo (al máximo)
+func _color_potencia(potencia: float) -> Color:
+	if potencia < 0.5:
+		return COLOR_SUAVE.lerp(COLOR_MEDIO, potencia / 0.5)
+	return COLOR_MEDIO.lerp(COLOR_FUERTE, (potencia - 0.5) / 0.5)
 
 func _physics_process(delta: float) -> void:
 	var velocidad := linear_velocity.length()
@@ -133,7 +182,6 @@ func _physics_process(delta: float) -> void:
 		linear_velocity = Vector2.ZERO
 	_viento_restante = maxf(_viento_restante - delta, 0.0)
 
-	# en el barro la pelota se va embarrando
 	if zonas_barro > 0 and suciedad < 1.0:
 		suciedad = minf(suciedad + velocidad_ensuciar * delta, 1.0)
 		_actualizar_suciedad()
@@ -152,18 +200,22 @@ func recibir_viento(fuerza: Vector2) -> void:
 	apply_central_force(fuerza)
 	_viento_restante = 0.1
 
-## Se puede apuntar si la pelota está quieta, resbalando sobre hielo o dentro del viento
 func puede_apuntar() -> bool:
-	return esta_quieta() or zonas_hielo > 0 or en_viento
+	return linear_velocity.length() < velocidad_para_tirar or zonas_hielo > 0 or en_viento
 
-## Los llama el barro cuando la pelota entra o sale
+## Antes de tirar, una pelota lenta se frena del todo para que el tiro salga limpio.
+## Sobre hielo o en el viento no: ahí el tiro se suma al movimiento, como siempre.
+func _frenar_para_tirar() -> void:
+	if zonas_hielo > 0 or en_viento:
+		return
+	linear_velocity = Vector2.ZERO
+
 func entrar_barro() -> void:
 	zonas_barro += 1
 
 func salir_barro() -> void:
 	zonas_barro = maxi(zonas_barro - 1, 0)
 
-## Dentro del barro el tiro sale más flojo
 func _factor_tiro() -> float:
 	return factor_barro if zonas_barro > 0 else 1.0
 
@@ -171,8 +223,6 @@ func _limpiar_un_poco() -> void:
 	if suciedad > 0.0:
 		suciedad = maxf(suciedad - limpieza_por_golpe, 0.0)
 		_actualizar_suciedad()
-
-# --- Manchas de barro: aparecen al embarrarse y se van yendo de a poco ---
 
 func _crear_manchas() -> void:
 	var azar := RandomNumberGenerator.new()
@@ -187,7 +237,6 @@ func _crear_manchas() -> void:
 
 func _dibujar_manchas() -> void:
 	for i in _datos_manchas.size():
-		# cada mancha tiene su umbral: con poca suciedad se ven pocas
 		var umbral := float(i) / float(_datos_manchas.size())
 		if suciedad <= umbral:
 			continue
@@ -201,7 +250,6 @@ func _actualizar_suciedad() -> void:
 	sprite.self_modulate = Color.WHITE.lerp(Color(0.62, 0.48, 0.32), suciedad * 0.75)
 	_manchas.queue_redraw()
 
-## Los llama la zona de hielo cuando la pelota entra o sale
 func entrar_hielo() -> void:
 	zonas_hielo += 1
 
@@ -215,9 +263,7 @@ func bloquear() -> void:
 
 func embocar(posicion_hoyo: Vector2) -> void:
 	en_hoyo = true
-	dragging = false
-	linea.clear_points()
-	punta_flecha.visible = false
+	_cancelar_apuntado()
 
 	freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
 	set_deferred("freeze", true)

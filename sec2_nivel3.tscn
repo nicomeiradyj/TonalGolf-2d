@@ -286,5 +286,5 @@ region_rect = Rect2(48.768066, 1383.3386, 1409.1069, 1277.0032)
 position = Vector2(-534, -129)
 polygon = PackedVector2Array(-67, -116, -31, -85, 37, -91, 73, -120, 106, -85, 75, -52, 79, 25, 108, 67, 72, 104, 44, 73, -42, 76, -67, 102, -102, 61, -77, 39, -78, -60, -102, -85)
 
-[node name="Ayuda" parent="." instance=ExtResource("99_cartel")]
+[node name="Ayuda" parent="." unique_id=1998243075 instance=ExtResource("99_cartel")]
 tipo = "viento"

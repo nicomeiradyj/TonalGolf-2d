@@ -64,7 +64,11 @@ shape = SubResource("RectangleShape2D_w7mgy")
 position = Vector2(690, 0)
 shape = SubResource("RectangleShape2D_4e15o")
 
+<<<<<<< Updated upstream
 [node name="MaderaIzquierda" type="Sprite2D" parent="Bordes" unique_id=18185760]
+=======
+[node name="MaderaIzquierda" type="Sprite2D" parent="Bordes" unique_id=1687270326]
+>>>>>>> Stashed changes
 texture_repeat = 2
 position = Vector2(-693.5, 22.50009)
 scale = Vector2(0.69105697, 3.0490081)
@@ -72,7 +76,11 @@ texture = ExtResource("12_madera2")
 region_enabled = true
 region_rect = Rect2(1384.4121, 510.00024, 123.95874, 857.1422)
 
+<<<<<<< Updated upstream
 [node name="MaderaArriba" type="Sprite2D" parent="Bordes" unique_id=248249262]
+=======
+[node name="MaderaArriba" type="Sprite2D" parent="Bordes" unique_id=1832261442]
+>>>>>>> Stashed changes
 texture_repeat = 2
 position = Vector2(21.869358, -1252.7618)
 rotation = 1.5707964
@@ -81,7 +89,11 @@ texture = ExtResource("12_madera2")
 region_enabled = true
 region_rect = Rect2(1354.4724, 1406.2643, 150.11816, 872.9083)
 
+<<<<<<< Updated upstream
 [node name="MaderaAbajo" type="Sprite2D" parent="Bordes" unique_id=502500399]
+=======
+[node name="MaderaAbajo" type="Sprite2D" parent="Bordes" unique_id=255495542]
+>>>>>>> Stashed changes
 texture_repeat = 2
 position = Vector2(-11.1197815, 1232.2083)
 rotation = 3.1431947
@@ -90,7 +102,11 @@ texture = ExtResource("12_madera2")
 region_enabled = true
 region_rect = Rect2(830.24084, 2092.1602, 463.43066, 114.950195)
 
+<<<<<<< Updated upstream
 [node name="MaderaDerecha" type="Sprite2D" parent="Bordes" unique_id=1358280555]
+=======
+[node name="MaderaDerecha" type="Sprite2D" parent="Bordes" unique_id=1294367328]
+>>>>>>> Stashed changes
 texture_repeat = 2
 position = Vector2(678, 2.9999695)
 scale = Vector2(0.8095238, 3)
@@ -103,7 +119,11 @@ region_rect = Rect2(1374.0004, 496.45132, 126.50037, 856.6489)
 [node name="Hoyo" parent="." unique_id=597095437 instance=ExtResource("4_q5elm")]
 position = Vector2(0, -1000)
 
+<<<<<<< Updated upstream
 [node name="Campo" type="Sprite2D" parent="." unique_id=107754671]
+=======
+[node name="Campo" type="Sprite2D" parent="." unique_id=185665261]
+>>>>>>> Stashed changes
 z_index = -10
 texture_repeat = 2
 position = Vector2(-1.0000296, 34.00004)
@@ -112,53 +132,90 @@ texture = ExtResource("13_fondo")
 region_enabled = true
 region_rect = Rect2(-5.813843, -0.80841064, 892.61707, 2050.1807)
 
+<<<<<<< Updated upstream
 [node name="Deco" type="Node2D" parent="." unique_id=842292948]
 z_index = -6
 
 [node name="Flores1" type="Sprite2D" parent="Deco" unique_id=146552962]
+=======
+[node name="Deco" type="Node2D" parent="." unique_id=1274896141]
+z_index = -6
+
+[node name="Flores1" type="Sprite2D" parent="Deco" unique_id=1910820895]
+>>>>>>> Stashed changes
 position = Vector2(545, 200)
 texture = ExtResource("15_flores")
 region_enabled = true
 region_rect = Rect2(63.4956, 1085.91, 337.452, 284.17)
 
+<<<<<<< Updated upstream
 [node name="Flores2" type="Sprite2D" parent="Deco" unique_id=1304840678]
+=======
+[node name="Flores2" type="Sprite2D" parent="Deco" unique_id=1282833298]
+>>>>>>> Stashed changes
 position = Vector2(520, 1080)
 texture = ExtResource("15_flores")
 region_enabled = true
 region_rect = Rect2(891.707, 688.261, 315.804, 262.428)
 
+<<<<<<< Updated upstream
 [node name="Molinos" type="Node2D" parent="." unique_id=1955867517]
 z_index = -6
 
 [node name="Molino1" type="Sprite2D" parent="Molinos" unique_id=726557303]
+=======
+[node name="Molinos" type="Node2D" parent="." unique_id=452506968]
+z_index = -6
+
+[node name="Molino1" type="Sprite2D" parent="Molinos" unique_id=959893350]
+>>>>>>> Stashed changes
 position = Vector2(-560, 0)
 scale = Vector2(0.168, 0.1795)
 texture = ExtResource("17_molinos")
 region_enabled = true
 region_rect = Rect2(48.768066, 1383.3386, 1409.1069, 1277.0032)
 
+<<<<<<< Updated upstream
 [node name="Arboles" type="Node2D" parent="." unique_id=913404949]
 z_index = 2
 
 [node name="Arbol1" type="Sprite2D" parent="Arboles" unique_id=1946048735]
+=======
+[node name="Arboles" type="Node2D" parent="." unique_id=1716967905]
+z_index = 2
+
+[node name="Arbol1" type="Sprite2D" parent="Arboles" unique_id=1441071714]
+>>>>>>> Stashed changes
 position = Vector2(-21, 366)
 scale = Vector2(1.0226, 1.0226)
 texture = ExtResource("21_arbol3")
 script = ExtResource("18_follaje")
 
+<<<<<<< Updated upstream
 [node name="Arbol2" type="Sprite2D" parent="Arboles" unique_id=2117353892]
+=======
+[node name="Arbol2" type="Sprite2D" parent="Arboles" unique_id=1500670081]
+>>>>>>> Stashed changes
 position = Vector2(430, 108)
 scale = Vector2(1.07281, 1.07281)
 texture = ExtResource("20_arbol2")
 script = ExtResource("18_follaje")
 
+<<<<<<< Updated upstream
 [node name="Arbol3" type="Sprite2D" parent="Arboles" unique_id=1728426371]
+=======
+[node name="Arbol3" type="Sprite2D" parent="Arboles" unique_id=1901097265]
+>>>>>>> Stashed changes
 position = Vector2(-21, 366)
 scale = Vector2(1.0226, 1.0226)
 texture = ExtResource("21_arbol3")
 script = ExtResource("18_follaje")
 
+<<<<<<< Updated upstream
 [node name="Arbol4" type="Sprite2D" parent="Arboles" unique_id=1639222363]
+=======
+[node name="Arbol4" type="Sprite2D" parent="Arboles" unique_id=1163029614]
+>>>>>>> Stashed changes
 position = Vector2(430, 108)
 scale = Vector2(1.07281, 1.07281)
 texture = ExtResource("20_arbol2")
@@ -343,3 +400,9 @@ polygon = PackedVector2Array(-67, -116, -31, -85, 37, -91, 73, -120, 106, -85, 7
 
 [node name="Ayuda" parent="." unique_id=1998243075 instance=ExtResource("99_cartel")]
 tipo = "viento"
+<<<<<<< Updated upstream
+=======
+
+[node name="Arboles2" type="Node2D" parent="." unique_id=102729734]
+z_index = 2
+>>>>>>> Stashed changes

@@ -10,10 +10,11 @@ func _ready() -> void:
 	pressed.connect(_on_pressed)
 	if Progreso.hardcore_record > 0:
 		var etiqueta := Label.new()
-		etiqueta.text = "RECORD: %d/%d" % [Progreso.hardcore_record, Progreso.TOTAL_NIVELES]
-		etiqueta.add_theme_font_size_override("font_size", 22)
+		etiqueta.text = "REC: %d/%d" % [Progreso.hardcore_record, Progreso.TOTAL_NIVELES]
+		etiqueta.add_theme_font_size_override("font_size", 16)
+		etiqueta.add_theme_color_override("font_color", Color(1, 0.85, 0.85, 0.9))
 		etiqueta.set_anchors_preset(Control.PRESET_FULL_RECT)
-		etiqueta.offset_right = -16
+		etiqueta.offset_right = -20
 		etiqueta.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		etiqueta.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		etiqueta.mouse_filter = Control.MOUSE_FILTER_IGNORE

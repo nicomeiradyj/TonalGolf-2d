@@ -26,7 +26,66 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5019608)
 
+[node name="VBOx" type="VBoxContainer" parent="Fondo" unique_id=584102120]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 362.0
+offset_right = 600.0
+offset_bottom = 918.0
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="Titulo" type="Label" parent="Fondo/VBOx" unique_id=1909216937]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "¡NIVEL
+COMPLETADO!"
+horizontal_alignment = 1
+
+[node name="Resultado" type="Label" parent="Fondo/VBOx" unique_id=726504986]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 48
+text = "PAR"
+horizontal_alignment = 1
+
+[node name="Golpes" type="Label" parent="Fondo/VBOx" unique_id=1876501522]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Golpes: 0"
+horizontal_alignment = 1
+
+[node name="Record" type="Label" parent="Fondo/VBOx" unique_id=2067522512]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3372549, 0.8, 0.5411765, 1)
+theme_override_font_sizes/font_size = 30
+text = "¡NUEVO RECORD!"
+horizontal_alignment = 1
+
+[node name="BotonSiguiente" type="Button" parent="Fondo/VBOx" unique_id=2013154674]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "SIGUIENTE"
+
+[node name="BotonReintentar" type="Button" parent="Fondo/VBOx" unique_id=1837473182]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "REINTENTAR"
+
+[node name="BotonMenu" type="Button" parent="Fondo/VBOx" unique_id=1306055643]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "MENU"
+
 [node name="Panel" type="PanelContainer" parent="Fondo" unique_id=558657540]
+visible = false
 custom_minimum_size = Vector2(560, 620)
 layout_mode = 1
 anchors_preset = 8
@@ -41,57 +100,3 @@ offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fuvoa")
-
-[node name="VBOx" type="VBoxContainer" parent="Fondo/Panel" unique_id=584102120]
-layout_mode = 2
-theme_override_constants/separation = 28
-alignment = 1
-
-[node name="Titulo" type="Label" parent="Fondo/Panel/VBOx" unique_id=1909216937]
-layout_mode = 2
-theme_override_font_sizes/font_size = 44
-text = "¡NIVEL
-COMPLETADO!"
-horizontal_alignment = 1
-
-[node name="Resultado" type="Label" parent="Fondo/Panel/VBOx"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
-theme_override_font_sizes/font_size = 48
-text = "PAR"
-horizontal_alignment = 1
-
-[node name="Golpes" type="Label" parent="Fondo/Panel/VBOx" unique_id=1876501522]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Golpes: 0"
-horizontal_alignment = 1
-
-[node name="Record" type="Label" parent="Fondo/Panel/VBOx"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.3372549, 0.8, 0.5411765, 1)
-theme_override_font_sizes/font_size = 30
-text = "¡NUEVO RECORD!"
-horizontal_alignment = 1
-
-[node name="BotonSiguiente" type="Button" parent="Fondo/Panel/VBOx" unique_id=2013154674]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "SIGUIENTE"
-
-[node name="BotonReintentar" type="Button" parent="Fondo/Panel/VBOx" unique_id=1837473182]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "REINTENTAR"
-
-[node name="BotonMenu" type="Button" parent="Fondo/Panel/VBOx" unique_id=1306055643]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "MENU"

@@ -278,6 +278,24 @@ func _actualizar_suciedad() -> void:
 	sprite.self_modulate = Color.WHITE.lerp(Color(0.62, 0.48, 0.32), suciedad * 0.75)
 	_manchas.queue_redraw()
 
+## Follaje (arbustos, flores): la pelota pasa POR DEBAJO; se ve mas oscura y translucida
+var zonas_follaje: int = 0
+
+func entrar_follaje() -> void:
+	zonas_follaje += 1
+	_tono_follaje()
+
+
+func salir_follaje() -> void:
+	zonas_follaje = maxi(zonas_follaje - 1, 0)
+	_tono_follaje()
+
+
+func _tono_follaje() -> void:
+	var destino := Color(0.62, 0.78, 0.62, 0.8) if zonas_follaje > 0 else Color.WHITE
+	create_tween().tween_property(self, "modulate", destino, 0.18)
+
+
 func entrar_hielo() -> void:
 	zonas_hielo += 1
 

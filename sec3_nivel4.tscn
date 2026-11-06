@@ -17,6 +17,10 @@
 [ext_resource type="Texture2D" path="res://assets/assets editados/flores.png" id="15_flores"]
 [ext_resource type="Texture2D" path="res://assets/assets editados/pasto.png" id="16_pasto"]
 [ext_resource type="Texture2D" path="res://assets/assets editados/molinos.png" id="17_molinos"]
+[ext_resource type="Script" path="res://follaje.gd" id="18_follaje"]
+[ext_resource type="Texture2D" path="res://assets/arboles/arbol1.png" id="19_arbol1"]
+[ext_resource type="Texture2D" path="res://assets/arboles/arbol2.png" id="20_arbol2"]
+[ext_resource type="Texture2D" path="res://assets/arboles/arbol3.png" id="21_arbol3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arriba"]
 size = Vector2(1440, 60)
@@ -290,6 +294,24 @@ scale = Vector2(1.95436, 2.34579)
 texture = ExtResource("16_pasto")
 region_enabled = true
 region_rect = Rect2(44.4338, 153.266, 122.517, 143.311)
+
+[node name="Molinos" type="Node2D" parent="."]
+z_index = -6
+
+[node name="Arboles" type="Node2D" parent="."]
+z_index = 2
+
+[node name="Arbol1" type="Sprite2D" parent="Arboles"]
+position = Vector2(-437, -386)
+scale = Vector2(0.953959, 0.953959)
+script = ExtResource("18_follaje")
+texture = ExtResource("19_arbol1")
+
+[node name="Arbol2" type="Sprite2D" parent="Arboles"]
+position = Vector2(-4, -621)
+scale = Vector2(0.981059, 0.981059)
+script = ExtResource("18_follaje")
+texture = ExtResource("19_arbol1")
 
 [node name="PantallaVictoria" parent="." instance=ExtResource("6_victoria")]
 visible = false

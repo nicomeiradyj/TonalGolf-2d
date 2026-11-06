@@ -22,6 +22,12 @@ var _segundo_anterior: int = -1
 var _par: int = 0
 var _golpes: int = 0
 var _pips: Control
+# --- modo panico (hardcore con poco tiempo) ---
+var _tiempo_total: float = 0.0
+var _panico: bool = false
+var _intensidad: float = 0.0
+var _sacudida: float = 0.0
+var _vineta: TextureRect
 
 
 func _ready() -> void:
@@ -138,6 +144,8 @@ func configurar(nombre: String, par: int, mejor: int) -> void:
 ## Prende el cronometro y ajusta los menues para el modo HARDCORE
 func activar_hardcore(tiempo_total: float) -> void:
 	label_tiempo.visible = true
+	_tiempo_total = tiempo_total
+	_crear_vineta()
 	# (el rojo del titulo y la fila de tiempo indican el modo; "HARDCORE" ensanchaba la tarjeta)
 	label_nivel.add_theme_color_override("font_color", Color(1.0, 0.35, 0.3))
 	# no se puede reiniciar el nivel (el tiempo seria un truco) y salir abandona la partida
@@ -149,16 +157,109 @@ func activar_hardcore(tiempo_total: float) -> void:
 func actualizar_tiempo(segundos: float) -> void:
 	var restante := maxi(ceili(segundos), 0)
 	label_tiempo.text = "TIEMPO %d" % restante
-	var urgente := restante <= 10
+	var umbral := umbral_panico()
+	var urgente := float(restante) <= umbral
 	label_tiempo.add_theme_color_override("font_color", Color(1.0, 0.3, 0.25) if urgente else Color.WHITE)
-	# en los ultimos 5 segundos suena un tic y el reloj "late"
+	if urgente and restante > 0 and not bloqueado:
+		_intensidad = clampf(1.0 - segundos / umbral, 0.0, 1.0)
+		if not _panico:
+			_panico = true
+			Sonidos.iniciar_panico()
+			_cartel_alerta()
+		Sonidos.intensidad_panico(_intensidad)
+	# cada segundo en panico: tic, latido del reloj, sacudida de camara y vibracion del celular
 	if restante != _segundo_anterior:
 		_segundo_anterior = restante
-		if restante <= 5 and restante > 0:
+		if urgente and restante > 0:
 			Sonidos.reproducir("tictac")
 			label_tiempo.pivot_offset = label_tiempo.size / 2.0
-			label_tiempo.scale = Vector2(1.25, 1.25)
+			label_tiempo.scale = Vector2(1.3, 1.3)
 			create_tween().tween_property(label_tiempo, "scale", Vector2.ONE, 0.3)
+			_sacudida = 7.0 + 12.0 * _intensidad
+			if OS.has_feature("mobile"):
+				Input.vibrate_handheld(int(70 + 110 * _intensidad))
+
+
+## Desde cuanto tiempo restante empieza el panico (40% del total, entre 8 y 15 s)
+func umbral_panico() -> float:
+	return clampf(_tiempo_total * 0.4, 8.0, 15.0)
+
+
+func _crear_vineta() -> void:
+	var g := Gradient.new()
+	g.offsets = PackedFloat32Array([0.5, 1.0])
+	g.colors = PackedColorArray([Color(1, 0.1, 0.1, 0.0), Color(1, 0.1, 0.1, 0.55)])
+	var tex := GradientTexture2D.new()
+	tex.gradient = g
+	tex.fill = GradientTexture2D.FILL_RADIAL
+	tex.fill_from = Vector2(0.5, 0.5)
+	tex.fill_to = Vector2(1.0, 0.85)
+	tex.width = 256
+	tex.height = 256
+	_vineta = TextureRect.new()
+	_vineta.texture = tex
+	_vineta.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_vineta.stretch_mode = TextureRect.STRETCH_SCALE
+	_vineta.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_vineta.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_vineta.modulate.a = 0.0
+	add_child(_vineta)
+	move_child(_vineta, 0)
+
+
+## Cartel grande "¡SE ACABA EL TIEMPO!" al entrar en panico
+func _cartel_alerta() -> void:
+	var l := Label.new()
+	l.text = "¡SE ACABA\nEL TIEMPO!"
+	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	l.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	l.set_anchors_preset(Control.PRESET_CENTER)
+	l.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	l.grow_vertical = Control.GROW_DIRECTION_BOTH
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	l.add_theme_font_size_override("font_size", 64)
+	l.add_theme_color_override("font_color", Color(1.0, 0.25, 0.2))
+	l.add_theme_color_override("font_outline_color", Color.BLACK)
+	l.add_theme_constant_override("outline_size", 14)
+	if ResourceLoader.exists("res://assets/w3-ip.ttf"):
+		l.add_theme_font_override("font", load("res://assets/w3-ip.ttf"))
+	add_child(l)
+	await get_tree().process_frame
+	l.pivot_offset = l.size / 2.0
+	l.scale = Vector2(0.4, 0.4)
+	var t := create_tween()
+	t.tween_property(l, "scale", Vector2(1.15, 1.15), 0.25)
+	t.tween_property(l, "scale", Vector2.ONE, 0.1)
+	t.tween_interval(1.1)
+	t.tween_property(l, "modulate:a", 0.0, 0.4)
+	t.tween_callback(l.queue_free)
+
+
+func _process(delta: float) -> void:
+	var camara := get_viewport().get_camera_2d()
+	if not _panico or bloqueado or get_tree().paused:
+		if camara:
+			camara.offset = Vector2.ZERO
+		if _vineta:
+			_vineta.modulate.a = 0.0
+		label_tiempo.rotation = 0.0
+		return
+	var latido := 0.5 + 0.5 * sin(Time.get_ticks_msec() / 1000.0 * TAU * (1.4 + 1.2 * _intensidad))
+	_sacudida = move_toward(_sacudida, 1.5 + 2.5 * _intensidad, delta * 40.0)   # temblor continuo + golpes por segundo
+	if camara:
+		camara.offset = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * _sacudida
+	label_tiempo.pivot_offset = label_tiempo.size / 2.0
+	label_tiempo.rotation = randf_range(-1.0, 1.0) * 0.05 * (0.4 + _intensidad)
+	label_tiempo.add_theme_color_override("font_color", Color(1.0, 0.3, 0.25).lerp(Color.WHITE, latido * 0.6))
+	if _vineta:
+		_vineta.modulate.a = (0.25 + 0.75 * latido) * (0.35 + 0.65 * _intensidad)
+
+
+func _exit_tree() -> void:
+	var camara := get_viewport().get_camera_2d() if is_inside_tree() else null
+	if camara:
+		camara.offset = Vector2.ZERO
+	Sonidos.detener_panico()
 
 
 func actualizar_golpes(total: int) -> void:
@@ -177,6 +278,8 @@ func actualizar_golpes(total: int) -> void:
 func terminar() -> void:
 	bloqueado = true
 	visible = false
+	_panico = false
+	Sonidos.detener_panico()
 
 
 func alternar_pausa() -> void:

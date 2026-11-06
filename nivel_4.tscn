@@ -9,6 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://cmp1lowbjy75e" path="res://pantalla_victoria.tscn" id="6_kd3qp"]
 [ext_resource type="PackedScene" path="res://hud.tscn" id="7_hud"]
 
+[ext_resource type="Texture2D" path="res://assets/assets editados/madera.png" id="12_madera2"]
+[ext_resource type="Texture2D" path="res://assets/assets editados/pasto fondo2.jpg" id="13_fondo"]
+[ext_resource type="Texture2D" path="res://assets/free-rocks-and-stones-top-down-pixel-art/PNG/Rocks_source.png" id="14_rocas"]
+[ext_resource type="Texture2D" path="res://assets/assets editados/flores.png" id="15_flores"]
+[ext_resource type="Texture2D" path="res://assets/assets editados/pasto.png" id="16_pasto"]
+[ext_resource type="Texture2D" path="res://assets/assets editados/molinos.png" id="17_molinos"]
+[ext_resource type="Script" path="res://follaje.gd" id="18_follaje"]
+[ext_resource type="Texture2D" path="res://assets/arboles/arbol1.png" id="19_arbol1"]
+[ext_resource type="Texture2D" path="res://assets/arboles/arbol2.png" id="20_arbol2"]
+[ext_resource type="Texture2D" path="res://assets/arboles/arbol3.png" id="21_arbol3"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
 size = Vector2(1440, 60)
 
@@ -70,35 +80,39 @@ shape = SubResource("RectangleShape2D_w7mgy")
 position = Vector2(690, 0)
 shape = SubResource("RectangleShape2D_4e15o")
 
-[node name="MaderaIzquierda" type="Sprite2D" parent="Bordes" unique_id=1124595221]
+[node name="MaderaIzquierda" type="Sprite2D" parent="Bordes"]
 texture_repeat = 2
-position = Vector2(-690, 0)
-texture = ExtResource("3_320mp")
+position = Vector2(-693.5, 22.50009)
+scale = Vector2(0.69105697, 3.0490081)
+texture = ExtResource("12_madera2")
 region_enabled = true
-region_rect = Rect2(0, 0, 60, 2560)
+region_rect = Rect2(1384.4121, 510.00024, 123.95874, 857.1422)
 
-[node name="MaderaArriba" type="Sprite2D" parent="Bordes" unique_id=1257992350]
+[node name="MaderaArriba" type="Sprite2D" parent="Bordes"]
 texture_repeat = 2
-position = Vector2(0, -1250)
+position = Vector2(21.869358, -1252.7618)
 rotation = 1.5707964
-texture = ExtResource("3_320mp")
+scale = Vector2(0.5212839, 1.5867532)
+texture = ExtResource("12_madera2")
 region_enabled = true
-region_rect = Rect2(0, 0, 60, 1440)
+region_rect = Rect2(1354.4724, 1406.2643, 150.11816, 872.9083)
 
-[node name="MaderaAbajo" type="Sprite2D" parent="Bordes" unique_id=1543714669]
+[node name="MaderaAbajo" type="Sprite2D" parent="Bordes"]
 texture_repeat = 2
-position = Vector2(0, 1250)
-rotation = 1.5707964
-texture = ExtResource("3_320mp")
+position = Vector2(-11.1197815, 1232.2083)
+rotation = 3.1431947
+scale = Vector2(2.8157086, 0.6881768)
+texture = ExtResource("12_madera2")
 region_enabled = true
-region_rect = Rect2(0, 0, 60, 1440)
+region_rect = Rect2(830.24084, 2092.1602, 463.43066, 114.950195)
 
-[node name="MaderaDerecha" type="Sprite2D" parent="Bordes" unique_id=1070977807]
+[node name="MaderaDerecha" type="Sprite2D" parent="Bordes"]
 texture_repeat = 2
-position = Vector2(690, 0)
-texture = ExtResource("3_320mp")
+position = Vector2(678, 2.9999695)
+scale = Vector2(0.8095238, 3)
+texture = ExtResource("12_madera2")
 region_enabled = true
-region_rect = Rect2(0, 0, 60, 2560)
+region_rect = Rect2(1374.0004, 496.45132, 126.50037, 856.6489)
 
 [node name="Obstaculos" type="Node2D" parent="." unique_id=687557746]
 
@@ -109,11 +123,64 @@ rotation = -1.5601485
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo5" unique_id=1337490203]
 shape = SubResource("RectangleShape2D_obs1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo5" unique_id=466586869]
-texture_repeat = 2
-texture = ExtResource("3_320mp")
+[node name="Roca1" type="Sprite2D" parent="Obstaculos/Obstaculo5"]
+position = Vector2(-271.2, -1.4)
+scale = Vector2(1.695, 1.695)
+flip_h = true
+texture = ExtResource("14_rocas")
 region_enabled = true
-region_rect = Rect2(0, 0, 700, 60)
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca2" type="Sprite2D" parent="Obstaculos/Obstaculo5"]
+position = Vector2(-193.8, -0.7)
+scale = Vector2(1.755, 1.755)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca3" type="Sprite2D" parent="Obstaculos/Obstaculo5"]
+position = Vector2(-116.2, -3.6)
+scale = Vector2(1.69, 1.69)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca4" type="Sprite2D" parent="Obstaculos/Obstaculo5"]
+position = Vector2(-38.8, -3.5)
+scale = Vector2(1.768, 1.768)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca5" type="Sprite2D" parent="Obstaculos/Obstaculo5"]
+position = Vector2(38.8, -2.9)
+scale = Vector2(1.654, 1.654)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca6" type="Sprite2D" parent="Obstaculos/Obstaculo5"]
+position = Vector2(116.2, -4.1)
+scale = Vector2(1.698, 1.698)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca7" type="Sprite2D" parent="Obstaculos/Obstaculo5"]
+position = Vector2(193.8, 4.6)
+scale = Vector2(1.706, 1.706)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca8" type="Sprite2D" parent="Obstaculos/Obstaculo5"]
+position = Vector2(271.2, 2.1)
+scale = Vector2(1.737, 1.737)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
 
 [node name="Obstaculo2" type="StaticBody2D" parent="Obstaculos" unique_id=2077990880]
 position = Vector2(310, 104)
@@ -122,11 +189,67 @@ position = Vector2(310, 104)
 position = Vector2(1.5, -3.5)
 shape = SubResource("RectangleShape2D_pk2ow")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo2" unique_id=1608568270]
-texture_repeat = 2
-texture = ExtResource("3_320mp")
+[node name="Roca1" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(-271.9, -1.1)
+scale = Vector2(1.552, 1.552)
+flip_h = true
+texture = ExtResource("14_rocas")
 region_enabled = true
-region_rect = Rect2(0, 0, 700, 60)
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca2" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(-193.8, -0.3)
+scale = Vector2(1.716, 1.716)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca3" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(-115.7, -3.9)
+scale = Vector2(1.556, 1.556)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca4" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(-37.6, -7.2)
+scale = Vector2(1.534, 1.534)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca5" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(40.6, -1)
+scale = Vector2(1.722, 1.722)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca6" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(118.7, -8.3)
+scale = Vector2(1.671, 1.671)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca7" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(196.8, 1.3)
+scale = Vector2(1.505, 1.505)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca8" type="Sprite2D" parent="Obstaculos/Obstaculo2"]
+position = Vector2(274.9, -8.4)
+scale = Vector2(1.723, 1.723)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
 
 [node name="Obstaculo7" type="StaticBody2D" parent="Obstaculos" unique_id=59537841]
 position = Vector2(310, -840)
@@ -135,13 +258,28 @@ position = Vector2(310, -840)
 position = Vector2(-309.5, -1.0625)
 shape = SubResource("RectangleShape2D_r81sy")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo7" unique_id=1302917379]
-texture_repeat = 2
-position = Vector2(-307, -3)
-scale = Vector2(0.4342857, 0.9)
-texture = ExtResource("3_320mp")
+[node name="Roca1" type="Sprite2D" parent="Obstaculos/Obstaculo7"]
+position = Vector2(-382.5, -5.5)
+scale = Vector2(1.641, 1.641)
+texture = ExtResource("14_rocas")
 region_enabled = true
-region_rect = Rect2(0, 0, 700, 60)
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca2" type="Sprite2D" parent="Obstaculos/Obstaculo7"]
+position = Vector2(-309.5, -2.8)
+scale = Vector2(1.681, 1.681)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca3" type="Sprite2D" parent="Obstaculos/Obstaculo7"]
+position = Vector2(-236.5, -2)
+scale = Vector2(1.55, 1.55)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
 
 [node name="Obstaculo3" type="StaticBody2D" parent="Obstaculos" unique_id=411683388]
 position = Vector2(-397.99997, -11.9999695)
@@ -150,11 +288,64 @@ rotation = -0.65778553
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo3" unique_id=966998445]
 shape = SubResource("RectangleShape2D_obs3")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo3" unique_id=1517888538]
-texture_repeat = 2
-texture = ExtResource("3_320mp")
+[node name="Roca1" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+position = Vector2(-271.2, 3)
+scale = Vector2(1.749, 1.749)
+flip_h = true
+texture = ExtResource("14_rocas")
 region_enabled = true
-region_rect = Rect2(0, 0, 700, 60)
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca2" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+position = Vector2(-193.8, -2.1)
+scale = Vector2(1.643, 1.643)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca3" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+position = Vector2(-116.2, 2.3)
+scale = Vector2(1.748, 1.748)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca4" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+position = Vector2(-38.8, -0.4)
+scale = Vector2(1.631, 1.631)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca5" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+position = Vector2(38.8, -2)
+scale = Vector2(1.671, 1.671)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca6" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+position = Vector2(116.2, -1.8)
+scale = Vector2(1.728, 1.728)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca7" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+position = Vector2(193.8, -2.8)
+scale = Vector2(1.51, 1.51)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca8" type="Sprite2D" parent="Obstaculos/Obstaculo3"]
+position = Vector2(271.2, 0.7)
+scale = Vector2(1.795, 1.795)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
 
 [node name="Obstaculo4" type="StaticBody2D" parent="Obstaculos" unique_id=927106478]
 position = Vector2(8, -530)
@@ -163,11 +354,29 @@ rotation = 0.7853982
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstaculos/Obstaculo4" unique_id=1634780311]
 shape = SubResource("RectangleShape2D_obs4")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo4" unique_id=1474208024]
-texture_repeat = 2
-texture = ExtResource("3_320mp")
+[node name="Roca1" type="Sprite2D" parent="Obstaculos/Obstaculo4"]
+position = Vector2(-47.3, -40.2)
+scale = Vector2(2.555, 2.555)
+flip_h = true
+texture = ExtResource("14_rocas")
 region_enabled = true
-region_rect = Rect2(0, 0, 220, 220)
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca2" type="Sprite2D" parent="Obstaculos/Obstaculo4"]
+position = Vector2(-8.6, 20.2)
+scale = Vector2(2.508, 2.508)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca3" type="Sprite2D" parent="Obstaculos/Obstaculo4"]
+position = Vector2(-4.8, -32.8)
+scale = Vector2(2.73, 2.73)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
 
 [node name="Obstaculo9" type="StaticBody2D" parent="Obstaculos" unique_id=1656061576]
 position = Vector2(-27, 116)
@@ -180,13 +389,13 @@ rotation = -0.78022975
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_fxqjy")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo9" unique_id=2030858389]
-texture_repeat = 2
-position = Vector2(0, 197.98991)
-rotation = -0.73556477
-texture = ExtResource("4_r81sy")
+[node name="Roca1" type="Sprite2D" parent="Obstaculos/Obstaculo9"]
+position = Vector2(0.5, 201.7)
+scale = Vector2(0.417, 0.417)
+flip_h = true
+texture = ExtResource("14_rocas")
 region_enabled = true
-region_rect = Rect2(416.86328, 459.17126, 33.002502, 38.24591)
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
 
 [node name="Obstaculo10" type="StaticBody2D" parent="Obstaculos" unique_id=2043367682]
 position = Vector2(1174.0001, -1299.0001)
@@ -199,14 +408,12 @@ rotation = -0.78022975
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_fxqjy")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo10" unique_id=1868116658]
-texture_repeat = 2
-position = Vector2(24.265503, 224.80293)
-rotation = -0.73556477
-scale = Vector2(1, 0.8506773)
-texture = ExtResource("4_r81sy")
+[node name="Roca1" type="Sprite2D" parent="Obstaculos/Obstaculo10"]
+position = Vector2(25.6, 225.9)
+scale = Vector2(0.414, 0.414)
+texture = ExtResource("14_rocas")
 region_enabled = true
-region_rect = Rect2(416.86328, 459.17126, 33.002502, 38.24591)
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
 
 [node name="Obstaculo6" type="StaticBody2D" parent="Obstaculos" unique_id=18132438]
 position = Vector2(-14, 417)
@@ -216,23 +423,62 @@ rotation = 0.7853982
 position = Vector2(1.0606995, 7.424591)
 shape = SubResource("RectangleShape2D_obs4")
 
-[node name="Sprite2D" type="Sprite2D" parent="Obstaculos/Obstaculo6" unique_id=1133840292]
-texture_repeat = 2
-texture = ExtResource("3_320mp")
+[node name="Roca1" type="Sprite2D" parent="Obstaculos/Obstaculo6"]
+position = Vector2(-8.8, 10.9)
+scale = Vector2(2.729, 2.729)
+flip_h = true
+texture = ExtResource("14_rocas")
 region_enabled = true
-region_rect = Rect2(0, 0, 220, 220)
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca2" type="Sprite2D" parent="Obstaculos/Obstaculo6"]
+position = Vector2(-43.1, 6)
+scale = Vector2(2.781, 2.781)
+flip_h = true
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
+
+[node name="Roca3" type="Sprite2D" parent="Obstaculos/Obstaculo6"]
+position = Vector2(26, -31.9)
+scale = Vector2(2.497, 2.497)
+texture = ExtResource("14_rocas")
+region_enabled = true
+region_rect = Rect2(188.364, 2.18115, 83.6366, 61.091)
 
 [node name="Hoyo" parent="." unique_id=597095437 instance=ExtResource("3_m2gv8")]
 position = Vector2(400, -990)
 fuerza_atraccion = 1600.0
 
-[node name="Campo" type="Sprite2D" parent="." unique_id=1451714435]
+[node name="Campo" type="Sprite2D" parent="."]
 z_index = -10
 texture_repeat = 2
-position = Vector2(1, 9)
-texture = ExtResource("4_m2gv8")
+position = Vector2(-1.0000296, 34.00004)
+scale = Vector2(1.6300449, 1.2243903)
+texture = ExtResource("13_fondo")
 region_enabled = true
-region_rect = Rect2(0, 0, 1440, 2560)
+region_rect = Rect2(-5.813843, -0.80841064, 892.61707, 2050.1807)
+
+[node name="Deco" type="Node2D" parent="."]
+z_index = -6
+
+[node name="Flores1" type="Sprite2D" parent="Deco"]
+position = Vector2(520, -90)
+texture = ExtResource("15_flores")
+region_enabled = true
+region_rect = Rect2(891.707, 688.261, 315.804, 262.428)
+
+[node name="Molinos" type="Node2D" parent="."]
+z_index = -6
+
+[node name="Arboles" type="Node2D" parent="."]
+z_index = 2
+
+[node name="Arbol1" type="Sprite2D" parent="Arboles"]
+position = Vector2(-401, -649)
+scale = Vector2(0.932565, 0.932565)
+script = ExtResource("18_follaje")
+texture = ExtResource("21_arbol3")
 
 [node name="PantallaVictoria" parent="." unique_id=1393267158 instance=ExtResource("6_kd3qp")]
 

@@ -25,8 +25,18 @@ Al completar el último nivel (3-4) el botón pasa a `VER RESULTADOS` y abre `pa
 hoyos en uno, niveles con par o mejor, récord hardcore y la grilla con el mejor resultado de cada nivel.
 Los pares y nombres están en `progreso.gd` (`PARES`, `NOMBRES`); si agregás niveles, sumalos ahí.
 
-## Estilo visual (sección 2 en adelante)
-Los niveles 2-1 a 2-3 usan el arte del compañero (rama MenuV2). 2-4 y toda la sección 3 usan el mismo estilo:
+## Árboles y modo pánico
+
+**Árboles:** copas de árbol (`assets/arboles/arbol1-3.png`) dibujadas por encima de la pelota. Cuando la pelota entra en la copa pasa *por debajo*: la copa se sacude, la pelota se oscurece/atenúa y suena un crujido de hojas (`follaje.gd`).
+
+**Modo hardcore – pánico:** cuando queda el 40 % del tiempo total (mínimo 8 s, máximo 15 s):
+- la música de fondo se pausa y suena la música de tensión (`assets/desesperacion.wav`), que se acelera y sube de volumen a medida que baja el tiempo;
+- sirena de alerta (`assets/alarma.wav`) y cartel "¡SE ACABA EL TIEMPO!";
+- el reloj tiembla y parpadea en rojo, la cámara vibra y aparece una viñeta roja pulsante;
+- en celulares vibra el dispositivo (`Input.vibrate_handheld`) cada segundo.
+
+## Estilo visual (todos los niveles)
+Todos los niveles usan el estilo del 2-2 (arte del compañero). Los de la sección 1 y el 2-1 se convirtieron con `tools/estilizar.py`; 2-4 y la sección 3 se generan con `gen_levels.py`:
 bordes de madera ilustrada, fondo `pasto fondo2.jpg`, paredes hechas con hileras de rocas (solo visual: la colisión
 sigue siendo un rectángulo), flores y pasto de decoración y molinos junto al viento. Se genera con `gen_levels.py`.
 

@@ -47,14 +47,8 @@ func mostrar(golpes: int, nivel_siguiente: String, par: int = 0, nuevo_record: b
 	Sonidos.jingle("victoria")
 
 ## Linea "QUEDAN N NIVELES" debajo del resultado
-func _mostrar_restantes(hardcore: bool) -> void:
-	var restantes := 0
-	if hardcore:
-		restantes = maxi(Progreso.TOTAL_NIVELES - (_nivel_actual()), 0)
-	else:
-		for i in Progreso.TOTAL_NIVELES:
-			if Progreso.mejor(i + 1) <= 0:
-				restantes += 1
+func _mostrar_restantes(_hardcore: bool) -> void:
+	var restantes := maxi(Progreso.TOTAL_NIVELES - _nivel_actual(), 0)
 	var l := Label.new()
 	l.text = "¡COMPLETASTE LOS %d NIVELES!" % Progreso.TOTAL_NIVELES if restantes == 0 else ("QUEDA 1 NIVEL" if restantes == 1 else "QUEDAN %d NIVELES" % restantes)
 	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

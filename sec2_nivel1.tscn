@@ -2,25 +2,20 @@
 
 [ext_resource type="Script" uid="uid://dmkkgknnt4pfu" path="res://nivel_1.gd" id="1_1ffvf"]
 [ext_resource type="PackedScene" uid="uid://5lhwwyyqub60" path="res://pelota.tscn" id="2_k1aqv"]
-[ext_resource type="Texture2D" uid="uid://c78v8xalp14ll" path="res://assets/bordeMadera.jpg" id="3_2vwo2"]
 [ext_resource type="PackedScene" uid="uid://deidyefrvlptn" path="res://hoyo.tscn" id="4_nupib"]
-[ext_resource type="Texture2D" uid="uid://b5fkvwquaoxos" path="res://assets/grass2d.png" id="5_mgojs"]
 [ext_resource type="PackedScene" uid="uid://cmp1lowbjy75e" path="res://pantalla_victoria.tscn" id="6_ffwal"]
 [ext_resource type="PackedScene" path="res://hud.tscn" id="7_ofpb4"]
 [ext_resource type="Texture2D" uid="uid://bdglsoe2bmq8t" path="res://assets/Tiled.png" id="8_qsikp"]
 [ext_resource type="PackedScene" uid="uid://r5miulvtlvjq" path="res://barro.tscn" id="9_1ffvf"]
+[ext_resource type="Texture2D" uid="uid://brke2lhw8i0r1" path="res://assets/assets editados/madera.png" id="12_madera2"]
+[ext_resource type="Texture2D" uid="uid://n83rk28c6p8q" path="res://assets/assets editados/pasto fondo2.jpg" id="13_fondo"]
+[ext_resource type="Texture2D" uid="uid://impejumun3ri" path="res://assets/assets editados/flores.png" id="15_flores"]
+[ext_resource type="Texture2D" uid="uid://d3xy4gichd3fc" path="res://assets/assets editados/pasto.png" id="16_pasto"]
+[ext_resource type="Script" uid="uid://0q1w5qqvl8wq" path="res://follaje.gd" id="18_follaje"]
+[ext_resource type="Texture2D" uid="uid://b3sicx4xjrac2" path="res://assets/arboles/arbol2.png" id="20_arbol2"]
+[ext_resource type="Texture2D" uid="uid://f0nqwytje6t5" path="res://assets/arboles/arbol3.png" id="21_arbol3"]
 [ext_resource type="PackedScene" path="res://cartel_zona.tscn" id="99_cartel"]
 
-[ext_resource type="Texture2D" path="res://assets/assets editados/madera.png" id="12_madera2"]
-[ext_resource type="Texture2D" path="res://assets/assets editados/pasto fondo2.jpg" id="13_fondo"]
-[ext_resource type="Texture2D" path="res://assets/free-rocks-and-stones-top-down-pixel-art/PNG/Rocks_source.png" id="14_rocas"]
-[ext_resource type="Texture2D" path="res://assets/assets editados/flores.png" id="15_flores"]
-[ext_resource type="Texture2D" path="res://assets/assets editados/pasto.png" id="16_pasto"]
-[ext_resource type="Texture2D" path="res://assets/assets editados/molinos.png" id="17_molinos"]
-[ext_resource type="Script" path="res://follaje.gd" id="18_follaje"]
-[ext_resource type="Texture2D" path="res://assets/arboles/arbol1.png" id="19_arbol1"]
-[ext_resource type="Texture2D" path="res://assets/arboles/arbol2.png" id="20_arbol2"]
-[ext_resource type="Texture2D" path="res://assets/arboles/arbol3.png" id="21_arbol3"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w0r3"]
 size = Vector2(1440, 60)
 
@@ -65,7 +60,7 @@ shape = SubResource("RectangleShape2D_w7mgy")
 position = Vector2(690, 0)
 shape = SubResource("RectangleShape2D_4e15o")
 
-[node name="MaderaIzquierda" type="Sprite2D" parent="Bordes"]
+[node name="MaderaIzquierda" type="Sprite2D" parent="Bordes" unique_id=1819221361]
 texture_repeat = 2
 position = Vector2(-693.5, 22.50009)
 scale = Vector2(0.69105697, 3.0490081)
@@ -73,7 +68,7 @@ texture = ExtResource("12_madera2")
 region_enabled = true
 region_rect = Rect2(1384.4121, 510.00024, 123.95874, 857.1422)
 
-[node name="MaderaArriba" type="Sprite2D" parent="Bordes"]
+[node name="MaderaArriba" type="Sprite2D" parent="Bordes" unique_id=244651144]
 texture_repeat = 2
 position = Vector2(21.869358, -1252.7618)
 rotation = 1.5707964
@@ -82,7 +77,7 @@ texture = ExtResource("12_madera2")
 region_enabled = true
 region_rect = Rect2(1354.4724, 1406.2643, 150.11816, 872.9083)
 
-[node name="MaderaAbajo" type="Sprite2D" parent="Bordes"]
+[node name="MaderaAbajo" type="Sprite2D" parent="Bordes" unique_id=46061977]
 texture_repeat = 2
 position = Vector2(-11.1197815, 1232.2083)
 rotation = 3.1431947
@@ -91,7 +86,7 @@ texture = ExtResource("12_madera2")
 region_enabled = true
 region_rect = Rect2(830.24084, 2092.1602, 463.43066, 114.950195)
 
-[node name="MaderaDerecha" type="Sprite2D" parent="Bordes"]
+[node name="MaderaDerecha" type="Sprite2D" parent="Bordes" unique_id=1860065662]
 texture_repeat = 2
 position = Vector2(678, 2.9999695)
 scale = Vector2(0.8095238, 3)
@@ -104,7 +99,7 @@ region_rect = Rect2(1374.0004, 496.45132, 126.50037, 856.6489)
 [node name="Hoyo" parent="." unique_id=597095437 instance=ExtResource("4_nupib")]
 position = Vector2(0, -1000)
 
-[node name="Campo" type="Sprite2D" parent="."]
+[node name="Campo" type="Sprite2D" parent="." unique_id=1615368839]
 z_index = -10
 texture_repeat = 2
 position = Vector2(-1.0000296, 34.00004)
@@ -113,78 +108,72 @@ texture = ExtResource("13_fondo")
 region_enabled = true
 region_rect = Rect2(-5.813843, -0.80841064, 892.61707, 2050.1807)
 
-[node name="Deco" type="Node2D" parent="."]
+[node name="Deco" type="Node2D" parent="." unique_id=1811678416]
 z_index = -6
 
-[node name="Pasto1" type="Sprite2D" parent="Deco"]
+[node name="Pasto1" type="Sprite2D" parent="Deco" unique_id=414558138]
 position = Vector2(-540, 1100)
 scale = Vector2(2.61364, 3.3629)
 texture = ExtResource("16_pasto")
 region_enabled = true
 region_rect = Rect2(413.38, 611.954, 127.836, 90.4206)
 
-[node name="Flores2" type="Sprite2D" parent="Deco"]
+[node name="Flores2" type="Sprite2D" parent="Deco" unique_id=667046484]
 position = Vector2(-545, 800)
 texture = ExtResource("15_flores")
 region_enabled = true
 region_rect = Rect2(891.707, 688.261, 315.804, 262.428)
 
-[node name="Pasto3" type="Sprite2D" parent="Deco"]
+[node name="Pasto3" type="Sprite2D" parent="Deco" unique_id=804063086]
 position = Vector2(545, -560)
 scale = Vector2(1.95436, 2.34579)
 texture = ExtResource("16_pasto")
 region_enabled = true
 region_rect = Rect2(44.4338, 153.266, 122.517, 143.311)
 
-[node name="Flores4" type="Sprite2D" parent="Deco"]
+[node name="Flores4" type="Sprite2D" parent="Deco" unique_id=1573942079]
 position = Vector2(-540, 300)
 texture = ExtResource("15_flores")
 region_enabled = true
 region_rect = Rect2(891.707, 688.261, 315.804, 262.428)
 
-[node name="Flores5" type="Sprite2D" parent="Deco"]
+[node name="Flores5" type="Sprite2D" parent="Deco" unique_id=1190345871]
 position = Vector2(545, 200)
 texture = ExtResource("15_flores")
 region_enabled = true
 region_rect = Rect2(63.4956, 1085.91, 337.452, 284.17)
 
-[node name="Flores6" type="Sprite2D" parent="Deco"]
+[node name="Flores6" type="Sprite2D" parent="Deco" unique_id=1858164092]
 position = Vector2(520, 1080)
 texture = ExtResource("15_flores")
 region_enabled = true
 region_rect = Rect2(63.4956, 1085.91, 337.452, 284.17)
 
-[node name="Molinos" type="Node2D" parent="."]
+[node name="Molinos" type="Node2D" parent="." unique_id=74996253]
 z_index = -6
 
-[node name="Arboles" type="Node2D" parent="."]
+[node name="Arboles" type="Node2D" parent="." unique_id=2027265800]
 z_index = 2
 
-[node name="Arbol1" type="Sprite2D" parent="Arboles"]
+[node name="Arbol1" type="Sprite2D" parent="Arboles" unique_id=354210112]
 position = Vector2(20, -631)
 scale = Vector2(0.900314, 0.900314)
-script = ExtResource("18_follaje")
 texture = ExtResource("20_arbol2")
+script = ExtResource("18_follaje")
 
-[node name="Arbol2" type="Sprite2D" parent="Arboles"]
+[node name="Arbol2" type="Sprite2D" parent="Arboles" unique_id=1549639784]
 position = Vector2(-231, 400)
 scale = Vector2(0.960103, 0.960103)
-script = ExtResource("18_follaje")
 texture = ExtResource("21_arbol3")
+script = ExtResource("18_follaje")
 
-[node name="Arbol3" type="Sprite2D" parent="Arboles"]
+[node name="Arbol3" type="Sprite2D" parent="Arboles" unique_id=2114064524]
 position = Vector2(429, -127)
 scale = Vector2(1.05115, 1.05115)
-script = ExtResource("18_follaje")
 texture = ExtResource("20_arbol2")
+script = ExtResource("18_follaje")
 
-[node name="PantallaVictoria" parent="." unique_id=1393267158 instance=ExtResource("6_ffwal")]
-
-[node name="HUD" parent="." unique_id=1868276487 instance=ExtResource("7_ofpb4")]
-
-[node name="Arboles" type="Node2D" parent="." unique_id=1945923729]
-
-[node name="Arbol1" type="Sprite2D" parent="Arboles" unique_id=1301552249]
+[node name="Arbol4" type="Sprite2D" parent="Arboles" unique_id=1301552249]
 visible = false
 position = Vector2(118.75, 72.75)
 scale = Vector2(2.642857, 2.186567)
@@ -192,7 +181,7 @@ texture = ExtResource("8_qsikp")
 region_enabled = true
 region_rect = Rect2(269.28925, 369.0027, 35.643738, 67.95264)
 
-[node name="Arbol2" type="Sprite2D" parent="Arboles" unique_id=396287476]
+[node name="Arbol5" type="Sprite2D" parent="Arboles" unique_id=396287476]
 visible = false
 position = Vector2(-495.625, 621.875)
 scale = Vector2(3.5785716, 2.958955)
@@ -200,13 +189,17 @@ texture = ExtResource("8_qsikp")
 region_enabled = true
 region_rect = Rect2(269.28925, 369.0027, 35.643738, 67.95264)
 
-[node name="Arbol3" type="Sprite2D" parent="Arboles" unique_id=1611178209]
+[node name="Arbol6" type="Sprite2D" parent="Arboles" unique_id=1611178209]
 visible = false
 position = Vector2(251, 1027)
 scale = Vector2(4.9321423, 2.9048505)
 texture = ExtResource("8_qsikp")
 region_enabled = true
 region_rect = Rect2(269.28925, 369.0027, 35.643738, 67.95264)
+
+[node name="PantallaVictoria" parent="." unique_id=1393267158 instance=ExtResource("6_ffwal")]
+
+[node name="HUD" parent="." unique_id=1868276487 instance=ExtResource("7_ofpb4")]
 
 [node name="Barro" type="Node" parent="." unique_id=807801063]
 
@@ -221,5 +214,5 @@ position = Vector2(462, -885)
 [node name="Charco4" parent="Barro" unique_id=1791040673 instance=ExtResource("9_1ffvf")]
 position = Vector2(453, 571)
 
-[node name="Ayuda" parent="." instance=ExtResource("99_cartel")]
+[node name="Ayuda" parent="." unique_id=660023319 instance=ExtResource("99_cartel")]
 tipo = "barro"

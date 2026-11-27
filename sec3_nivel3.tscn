@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="PackedScene" path="res://topo.tscn" id="22_topo"]
 [ext_resource type="Script" uid="uid://dmkkgknnt4pfu" path="res://nivel_1.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://5lhwwyyqub60" path="res://pelota.tscn" id="2_pelota"]
 [ext_resource type="Texture2D" uid="uid://c78v8xalp14ll" path="res://assets/bordeMadera.jpg" id="3_madera"]
@@ -316,6 +317,9 @@ position = Vector2(245, -614)
 scale = Vector2(1.06489, 1.06489)
 script = ExtResource("18_follaje")
 texture = ExtResource("21_arbol3")
+
+[node name="Topo" parent="." instance=ExtResource("22_topo")]
+position = Vector2(-200, -600)
 
 [node name="PantallaVictoria" parent="." instance=ExtResource("6_victoria")]
 visible = false

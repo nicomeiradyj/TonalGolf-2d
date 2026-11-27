@@ -22,6 +22,10 @@ var _segundo_anterior: int = -1
 var _par: int = 0
 var _golpes: int = 0
 var _pips: Control
+# --- progreso de la partida (12 segmentos + "QUEDAN N") ---
+var _progreso: Control
+var _numero: int = 0
+var _modo_hardcore: bool = false
 # --- modo panico (hardcore con poco tiempo) ---
 var _tiempo_total: float = 0.0
 var _panico: bool = false
@@ -41,6 +45,7 @@ func _ready() -> void:
 	btn_menu.pressed.connect(_on_menu)
 	_actualizar_texto_sonido()
 	_mejorar_estilo()
+	btn_reiniciar.text = "REINICIAR (R)"
 
 
 ## Look del HUD: tarjeta translucida con acento verde, indicador de golpes contra el par
@@ -87,6 +92,14 @@ func _mejorar_estilo() -> void:
 	textos.add_child(_pips)
 	textos.move_child(_pips, 2)
 
+	# progreso: un segmento por nivel (verde = completado, dorado = el actual) + cuantos quedan
+	_progreso = Control.new()
+	_progreso.custom_minimum_size = Vector2(218, 24)
+	_progreso.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_progreso.draw.connect(_dibujar_progreso)
+	textos.add_child(_progreso)
+	textos.move_child(_progreso, 4)
+
 	# boton de pausa: cuadrado redondeado, mismo lenguaje visual
 	var normal := _caja(Color(0.02, 0.05, 0.03, 0.62), VERDE, 14)
 	var hover := _caja(Color(0.05, 0.12, 0.07, 0.8), DORADO, 14)
@@ -130,7 +143,45 @@ func _dibujar_pips() -> void:
 		x += 28.0
 
 
-func configurar(nombre: String, par: int, mejor: int) -> void:
+## Niveles que todavía faltan completar (cuenta también el actual si no lo completaste)
+func niveles_restantes() -> int:
+	if _modo_hardcore:
+		return maxi(Progreso.TOTAL_NIVELES - maxi(_numero - 1, 0), 0)
+	var n := 0
+	for i in Progreso.TOTAL_NIVELES:
+		if Progreso.mejor(i + 1) <= 0:
+			n += 1
+	return n
+
+
+func _dibujar_progreso() -> void:
+	var total := Progreso.TOTAL_NIVELES
+	var ancho := 9.0
+	var hueco := 2.0
+	var fuente: Font = label_info.get_theme_font("font")
+	for i in total:
+		var r := Rect2(Vector2(2.0 + i * (ancho + hueco), 5.0), Vector2(ancho, 14.0))
+		var numero := i + 1
+		var hecho := (numero < _numero) if _modo_hardcore else (Progreso.mejor(numero) > 0)
+		if numero == _numero:
+			_progreso.draw_rect(r, Color(DORADO, 0.35))
+			_progreso.draw_rect(r, DORADO, false, 2.0)
+		elif hecho:
+			_progreso.draw_rect(r, VERDE)
+		else:
+			_progreso.draw_rect(r, Color(0.85, 0.95, 0.88, 0.14))
+			_progreso.draw_rect(r, Color(0.85, 0.95, 0.88, 0.45), false, 1.0)
+	var restantes := niveles_restantes()
+	var texto := "QUEDAN %d" % restantes if restantes > 0 else "COMPLETO"
+	var x0 := 2.0 + total * (ancho + hueco) + 7.0
+	_progreso.draw_string_outline(fuente, Vector2(x0, 19.0), texto, HORIZONTAL_ALIGNMENT_LEFT, -1, 14, 5, Color(0, 0, 0, 0.85))
+	_progreso.draw_string(fuente, Vector2(x0, 19.0), texto, HORIZONTAL_ALIGNMENT_LEFT, -1, 14, VERDE if restantes > 0 else DORADO)
+
+
+func configurar(nombre: String, par: int, mejor: int, numero: int = 0) -> void:
+	_numero = numero
+	if _progreso:
+		_progreso.queue_redraw()
 	label_nivel.text = "NIVEL %s" % nombre
 	var info := "PAR %d" % par
 	if mejor > 0:
@@ -143,6 +194,9 @@ func configurar(nombre: String, par: int, mejor: int) -> void:
 
 ## Prende el cronometro y ajusta los menues para el modo HARDCORE
 func activar_hardcore(tiempo_total: float) -> void:
+	_modo_hardcore = true
+	if _progreso:
+		_progreso.queue_redraw()
 	label_tiempo.visible = true
 	_tiempo_total = tiempo_total
 	_crear_vineta()
@@ -292,6 +346,12 @@ func alternar_pausa() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	# R en PC: reinicia el nivel (en hardcore no, igual que el boton)
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_R:
+		if not bloqueado and btn_reiniciar.visible:
+			get_viewport().set_input_as_handled()   # antes de reiniciar: despues este nodo ya no esta en el arbol
+			_on_reiniciar()
+		return
 	# Escape en PC
 	if event.is_action_pressed("ui_cancel"):
 		alternar_pausa()

@@ -18,6 +18,8 @@ const RUTAS := {
 	"victoria_final": "res://assets/victoria_final.wav",
 	"hojas": "res://assets/hojas.wav",
 	"alarma": "res://assets/alarma.wav",
+	"listo": "res://assets/listo.wav",
+	"topo_chupa": "res://assets/topo_chupa.wav",
 }
 
 ## Música de fondo (OGG en loop). Para cambiarla, reemplazá este archivo

@@ -16,6 +16,11 @@ const TEXTOS := {
 		"color": Color(0.8, 0.95, 1.0),
 		"lineas": ["LA BRISA EMPUJA LA PELOTA", "DENTRO DEL VIENTO PODES TIRAR\nAUNQUE LA PELOTA SE MUEVA", "USALO A TU FAVOR"],
 	},
+	"topo": {
+		"titulo": "¡CUIDADO: TOPO!",
+		"color": Color(1.0, 0.72, 0.25),
+		"lineas": ["SI LA PELOTA PASA POR SU CIRCULO ROJO\nEL TOPO LA CHUPA", "VUELVE A DONDE TIRASTE\n(EL GOLPE SE CUENTA IGUAL)", "RODEA EL CIRCULO PARA ESQUIVARLO"],
+	},
 	"hielo": {
 		"titulo": "HIELO",
 		"color": Color(0.55, 0.85, 1.0),
@@ -102,6 +107,11 @@ func _process(delta: float) -> void:
 func _dibujar_icono(color: Color) -> void:
 	var c := Vector2(_icono.size.x * 0.5, 45.0)
 	match tipo:
+		"topo":
+			var tex: Texture2D = load("res://assets/topo/topo_alerta.png")
+			var alto := 88.0
+			var ancho := alto * tex.get_width() / tex.get_height()
+			_icono.draw_texture_rect(tex, Rect2(c - Vector2(ancho / 2.0, 45.0), Vector2(ancho, alto)), false)
 		"hielo":
 			var r := Rect2(c - Vector2(70, 34), Vector2(140, 68))
 			_icono.draw_rect(r, Color(0.55, 0.82, 1.0, 0.9))

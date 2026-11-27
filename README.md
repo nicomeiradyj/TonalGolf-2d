@@ -8,6 +8,11 @@ Juego de mini golf 2D hecho en Godot 4.7, pensado para celular (vertical, 720x12
 - Soltá para pegarle. Solo se puede tirar con la pelota quieta, o moviéndose **sobre hielo** o **dentro del viento**.
 - Si la pelota entra muy rápido al hoyo, pasa de largo. Si pasa despacio rozando el borde, da la vueltita alrededor del hoyo y aparece "CASI!".
 - **Barro:** la pelota se embarra (manchas) y se va limpiando con cada golpe. Parada dentro del barro, el tiro sale más flojo.
+- **Potencia completa en cualquier lado:** el arrastre que da el 100 % se acorta solo si la pelota está cerca del borde de la pantalla y se arrastra hacia afuera: llevando el dedo/mouse hasta el borde siempre se llega a la fuerza máxima.
+- **Tecla `R`** (PC): reinicia el nivel (en hardcore no). No hay ningún cartel en pantalla; solo figura en el botón de la pausa como `REINICIAR (R)`.
+- **Progreso:** en el HUD hay 12 segmentos (verde = completado, dorado = el actual) y `QUEDAN N` niveles; la pantalla de victoria también lo muestra.
+- **"Ya podés tirar":** cuando la pelota se frena después de un golpe de verdad (no un toquecito) aparece un destello suave, como el sol pegando en una pelota de golf: halo tenue y una chispa fina arriba a la izquierda, con un "ding" muy bajito. Sucede una sola vez por golpe.
+- **Topo** (`topo.tscn`): en algunos niveles (3, 4, 2-2, 2-4 y 3-3) puede aparecer un topo con un círculo de tierra y puntos rojos. Si la pelota pasa por ese círculo, el topo se agacha, se abre un hueco, la pelota cae oscureciéndose bajo la tierra, y el topo sale tapando el hueco con un "¡ALTO!" (con un poco de tierra volando); después la pelota reaparece donde hiciste el último tiro (el golpe se cuenta igual). No aparece siempre: tiene `probabilidad` = 0.35 por partida, y cuando aparece un cartel explica qué hace. La zona es chica (`radio` = 140) y se ubicó donde no tapa los tiros de hoyo en uno (verificado con un solver por fuerza bruta con el topo presente).
 - Pausa: botón `II` (o `Esc` en PC, o el botón "atrás" en Android).
 - El primer nivel muestra un cartel rápido con el gesto de cómo se juega; desaparece solo al primer golpe.
 
@@ -41,7 +46,7 @@ bordes de madera ilustrada, fondo `pasto fondo2.jpg`, paredes hechas con hileras
 sigue siendo un rectángulo), flores y pasto de decoración y molinos junto al viento. Se genera con `gen_levels.py`.
 
 ## Carteles de terreno
-`cartel_zona.tscn` (propiedad `tipo`: `barro`, `viento` o `hielo`) muestra qué hace el terreno la primera vez que aparece
+`cartel_zona.tscn` (propiedad `tipo`: `barro`, `viento`, `hielo` o `topo`) muestra qué hace el terreno la primera vez que aparece
 (2-1 barro, 2-3 viento, 3-1 hielo) y desaparece al primer golpe. El nodo debe llamarse `Ayuda`.
 
 ## Sonidos
@@ -59,6 +64,7 @@ y si se acaba el tiempo **se pierde la partida completa** (pantalla GAME OVER). 
 - `sonidos.gd` (autoload `Sonidos`): música de fondo y efectos.
 - `hud.tscn`: golpes, par, mejor puntaje, reloj hardcore y menú de pausa.
 - `hielo.tscn`, `barro.tscn`, `viento.tscn`: zonas con efecto. Se dimensionan con `tamano`.
+- `topo.tscn` / `topo.gd`: topo que chupa la pelota (`radio`, `probabilidad`, `forzar_aparicion`). Para ponerlo en un nivel: instanciar `topo.tscn` y moverlo lejos del camino directo al hoyo (`tools/poner_topo.py nivel.tscn X Y` lo hace por script; `tools/elegir_topo.py` propone posiciones).
 - `ayuda.tscn`, `pantalla_game_over.tscn`, `pantalla_victoria.tscn`.
 
 ## Crear un nivel nuevo

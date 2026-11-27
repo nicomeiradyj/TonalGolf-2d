@@ -35,7 +35,7 @@ func _ready() -> void:
 
 	hud.visible = true
 	var titulo := nombre_nivel if nombre_nivel != "" else str(numero_nivel)
-	hud.configurar(titulo, par, Progreso.mejor(numero_nivel))
+	hud.configurar(titulo, par, Progreso.mejor(numero_nivel), numero_nivel)
 	hud.actualizar_golpes(0)
 
 	if hardcore:

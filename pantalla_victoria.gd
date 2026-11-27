@@ -42,8 +42,36 @@ func mostrar(golpes: int, nivel_siguiente: String, par: int = 0, nuevo_record: b
 		btn_reintentar.visible = false
 		label_record.visible = true
 		label_record.text = "TIEMPO SOBRANTE: %d s" % int(ceil(maxf(tiempo_sobrante, 0.0)))
+	_mostrar_restantes(hardcore)
 	visible = true
 	Sonidos.jingle("victoria")
+
+## Linea "QUEDAN N NIVELES" debajo del resultado
+func _mostrar_restantes(hardcore: bool) -> void:
+	var restantes := 0
+	if hardcore:
+		restantes = maxi(Progreso.TOTAL_NIVELES - (_nivel_actual()), 0)
+	else:
+		for i in Progreso.TOTAL_NIVELES:
+			if Progreso.mejor(i + 1) <= 0:
+				restantes += 1
+	var l := Label.new()
+	l.text = "¡COMPLETASTE LOS %d NIVELES!" % Progreso.TOTAL_NIVELES if restantes == 0 else ("QUEDA 1 NIVEL" if restantes == 1 else "QUEDAN %d NIVELES" % restantes)
+	l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	l.add_theme_font_size_override("font_size", 26)
+	l.add_theme_color_override("font_color", Color(0.3372549, 0.8, 0.5411765))
+	l.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
+	l.add_theme_constant_override("outline_size", 6)
+	if ResourceLoader.exists("res://assets/w3-ip.ttf"):
+		l.add_theme_font_override("font", load("res://assets/w3-ip.ttf"))
+	label_golpes.get_parent().add_child(l)
+	label_golpes.get_parent().move_child(l, label_golpes.get_index() + 1)
+
+
+func _nivel_actual() -> int:
+	var raiz := get_tree().current_scene
+	return int(raiz.numero_nivel) if raiz and "numero_nivel" in raiz else 0
+
 
 # Terminología de golf según la diferencia contra el par
 func _nombre_resultado(golpes: int, par: int) -> String:
